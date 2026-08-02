@@ -1,4 +1,4 @@
-import { Product } from "@/types";
+import { Product, CollectionStory } from "@/types";
 
 export const products: Product[] = [
   {
@@ -13,12 +13,23 @@ export const products: Product[] = [
     compareAtPrice: 3890,
     swatch: "linear-gradient(135deg, #D9CBB5, #B8A582)",
     variants: [
-      { id: "v1", title: "Oat / 3-Seat", price: 3290, optionValues: { colour: "Oat", size: "3-Seat" }, inventory: 6 },
-      { id: "v2", title: "Charcoal / 3-Seat", price: 3290, optionValues: { colour: "Charcoal", size: "3-Seat" }, inventory: 3 },
-      { id: "v3", title: "Oat / 2-Seat", price: 2690, optionValues: { colour: "Oat", size: "2-Seat" }, inventory: 9 },
+      { id: "v1", title: "Oat / 3-Seat", price: 3290, optionValues: { colour: "Oat", size: "3-Seat" }, inventory: 6, tint: "#D9CBB5" },
+      { id: "v2", title: "Charcoal / 3-Seat", price: 3290, optionValues: { colour: "Charcoal", size: "3-Seat" }, inventory: 3, tint: "#3A3833" },
+      { id: "v3", title: "Oat / 2-Seat", price: 2690, optionValues: { colour: "Oat", size: "2-Seat" }, inventory: 9, tint: "#D9CBB5" },
     ],
     rating: 4.8,
     reviewCount: 214,
+    hotspots: [
+      { id: "h1", x: 28, y: 40, label: "Frame", description: "Solid oak, kiln-dried to resist warping." },
+      { id: "h2", x: 62, y: 55, label: "Upholstery", description: "Pre-washed Belgian linen, softens with wear." },
+      { id: "h3", x: 50, y: 78, label: "Cushions", description: "Down-and-foam blend that keeps its shape." },
+    ],
+    materialDetail: {
+      name: "Pre-washed Belgian linen",
+      texture: "Loose plain weave with a dry, slightly slubby hand-feel.",
+      craft: "Woven in Belgium from long-line flax fibre, then washed for softness before cutting.",
+      care: "Vacuum weekly; spot-clean with cold water; professional upholstery clean once a year.",
+    },
   },
   {
     id: "p2",
@@ -36,6 +47,16 @@ export const products: Product[] = [
     ],
     rating: 4.9,
     reviewCount: 88,
+    hotspots: [
+      { id: "h4", x: 50, y: 35, label: "Top", description: "Honed travertine slab, natural veining." },
+      { id: "h5", x: 50, y: 82, label: "Base", description: "Blackened steel, powder-coated for durability." },
+    ],
+    materialDetail: {
+      name: "Honed travertine",
+      texture: "Matte, stone-cool surface with visible mineral veining.",
+      craft: "Quarried slabs are honed flat, then sealed to resist etching from acidic spills.",
+      care: "Wipe with a damp cloth; reseal annually; avoid prolonged contact with citrus or vinegar.",
+    },
   },
   {
     id: "p3",
@@ -49,12 +70,22 @@ export const products: Product[] = [
     compareAtPrice: 299,
     swatch: "linear-gradient(135deg, #F1EADC, #DCCFB4)",
     variants: [
-      { id: "v6", title: "Clay / Queen", price: 249, optionValues: { colour: "Clay", size: "Queen" }, inventory: 24 },
-      { id: "v7", title: "Sage / Queen", price: 249, optionValues: { colour: "Sage", size: "Queen" }, inventory: 17 },
-      { id: "v8", title: "Clay / King", price: 279, optionValues: { colour: "Clay", size: "King" }, inventory: 12 },
+      { id: "v6", title: "Clay / Queen", price: 249, optionValues: { colour: "Clay", size: "Queen" }, inventory: 24, tint: "#DCCFB4" },
+      { id: "v7", title: "Sage / Queen", price: 249, optionValues: { colour: "Sage", size: "Queen" }, inventory: 17, tint: "#A8B79A" },
+      { id: "v8", title: "Clay / King", price: 279, optionValues: { colour: "Clay", size: "King" }, inventory: 12, tint: "#DCCFB4" },
     ],
     rating: 4.7,
     reviewCount: 601,
+    hotspots: [
+      { id: "h6", x: 50, y: 30, label: "Weave", description: "300-thread-count organic cotton sateen." },
+      { id: "h7", x: 50, y: 70, label: "Finish", description: "Stonewashed for a soft hand-feel from night one." },
+    ],
+    materialDetail: {
+      name: "GOTS-certified organic cotton sateen",
+      texture: "Smooth, lightly lustrous weave with a soft drape.",
+      craft: "Woven from certified organic cotton, then stonewashed to break in the fibres before it ships.",
+      care: "Machine wash cold, tumble dry low; avoid bleach and fabric softener.",
+    },
   },
   {
     id: "p4",
@@ -67,11 +98,21 @@ export const products: Product[] = [
     basePrice: 380,
     swatch: "linear-gradient(135deg, #C8A876, #8F6F41)",
     variants: [
-      { id: "v9", title: "Brushed Brass", price: 380, optionValues: { finish: "Brushed Brass" }, inventory: 15 },
-      { id: "v10", title: "Blackened Brass", price: 410, optionValues: { finish: "Blackened Brass" }, inventory: 8 },
+      { id: "v9", title: "Brushed Brass", price: 380, optionValues: { finish: "Brushed Brass" }, inventory: 15, tint: "#C8A876" },
+      { id: "v10", title: "Blackened Brass", price: 410, optionValues: { finish: "Blackened Brass" }, inventory: 8, tint: "#2E2A24" },
     ],
     rating: 4.6,
     reviewCount: 132,
+    hotspots: [
+      { id: "h8", x: 50, y: 25, label: "Rod", description: "Solid brass, hand-finished." },
+      { id: "h9", x: 50, y: 68, label: "Globe", description: "Opal glass, diffuses light evenly." },
+    ],
+    materialDetail: {
+      name: "Solid brushed brass",
+      texture: "Warm, low-sheen metal with a fine directional grain.",
+      craft: "Cast and hand-brushed, then lacquered to slow natural tarnish.",
+      care: "Dust with a dry cloth; avoid abrasive cleaners on the lacquer.",
+    },
   },
   {
     id: "p5",
@@ -84,11 +125,21 @@ export const products: Product[] = [
     basePrice: 890,
     swatch: "linear-gradient(135deg, #EFE9DD, #D2C6AE)",
     variants: [
-      { id: "v11", title: "Ivory", price: 890, optionValues: { colour: "Ivory" }, inventory: 11 },
-      { id: "v12", title: "Stone", price: 890, optionValues: { colour: "Stone" }, inventory: 6 },
+      { id: "v11", title: "Ivory", price: 890, optionValues: { colour: "Ivory" }, inventory: 11, tint: "#EFE9DD" },
+      { id: "v12", title: "Stone", price: 890, optionValues: { colour: "Stone" }, inventory: 6, tint: "#B7AC98" },
     ],
     rating: 4.9,
     reviewCount: 97,
+    hotspots: [
+      { id: "h10", x: 45, y: 38, label: "Upholstery", description: "Dense ivory bouclé, textured and durable." },
+      { id: "h11", x: 50, y: 85, label: "Legs", description: "Turned beechwood, sealed with a matte oil." },
+    ],
+    materialDetail: {
+      name: "Ivory bouclé",
+      texture: "Looped, nubby pile with visible dimension.",
+      craft: "Woven from tightly twisted looped yarn for a resilient, hard-wearing surface.",
+      care: "Vacuum with an upholstery brush; blot spills immediately, do not rub.",
+    },
   },
   {
     id: "p6",
@@ -105,8 +156,40 @@ export const products: Product[] = [
     ],
     rating: 4.8,
     reviewCount: 340,
+    hotspots: [
+      { id: "h12", x: 50, y: 50, label: "Glaze", description: "Reactive charcoal glaze, unique per piece." },
+    ],
+    materialDetail: {
+      name: "Reactive-glaze stoneware",
+      texture: "Semi-matte surface with pooled, mottled variation.",
+      craft: "Fired stoneware finished in a reactive glaze that shifts tone with kiln placement.",
+      care: "Dishwasher and microwave safe; avoid extreme temperature shocks.",
+    },
   },
 ];
+
+export const collectionStories: Record<string, CollectionStory> = {
+  Living: {
+    title: "The Living Collection",
+    copy: "Pieces built for rooms that get used, not just photographed — honest materials that take a scuff and still look right a decade in.",
+  },
+  Dining: {
+    title: "The Dining Collection",
+    copy: "One slab, one base, no filler. Every dining piece is scaled for real dinners, not just the listing photo.",
+  },
+  Bedding: {
+    title: "The Bedding Collection",
+    copy: "Certified organic fibres, washed before they ever reach you, so night one already feels broken in.",
+  },
+  Lighting: {
+    title: "The Lighting Collection",
+    copy: "Warm, diffuse, and built from solid metal — light fixtures made to be touched, not just switched on.",
+  },
+  "Kitchen & Dining": {
+    title: "The Kitchen & Dining Collection",
+    copy: "Stoneware and ceramics finished by hand, so the small variation from piece to piece is the point, not a flaw.",
+  },
+};
 
 export function getProductBySlug(slug: string) {
   return products.find((p) => p.slug === slug);

@@ -1,21 +1,40 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { Product } from "@/types";
-import { MaterialSwatch } from "./material-swatch";
 import { useCart } from "@/components/cart/cart-context";
+import { ShowroomViewer } from "./showroom-viewer";
+import { Configurator } from "./configurator";
+import { MaterialExplorer } from "./material-explorer";
 
 export function ProductDetail({ product }: { product: Product }) {
   const [variantId, setVariantId] = useState(product.variants[0].id);
+  const [materialOpen, setMaterialOpen] = useState(false);
   const variant = product.variants.find((v) => v.id === variantId)!;
   const { addLine } = useCart();
 
   return (
     <div className="grid md:grid-cols-2 gap-14">
-      <MaterialSwatch gradient={product.swatch} className="aspect-[4/5]" />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        <ShowroomViewer
+          gradient={product.swatch}
+          tint={variant.tint}
+          hotspots={product.hotspots}
+          onExploreMaterial={product.materialDetail ? () => setMaterialOpen(true) : undefined}
+        />
+      </motion.div>
 
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
+      >
         <p className="eyebrow mb-3">{product.category}</p>
         <h1 className="font-display text-5xl mb-3">{product.title}</h1>
 
@@ -42,26 +61,11 @@ export function ProductDetail({ product }: { product: Product }) {
 
         <p className="text-ink/80 mb-8 max-w-md">{product.description}</p>
 
-        {product.variants.length > 1 && (
-          <div className="mb-8">
-            <p className="eyebrow mb-3">Options</p>
-            <div className="flex flex-wrap gap-2">
-              {product.variants.map((v) => (
-                <button
-                  key={v.id}
-                  onClick={() => setVariantId(v.id)}
-                  className={`border-2 px-4 py-2 text-sm font-bold uppercase transition-colors ${
-                    v.id === variantId
-                      ? "border-ink bg-ink text-paper"
-                      : "border-steel-light hover:border-ink"
-                  }`}
-                >
-                  {v.title}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
+        <Configurator
+          variants={product.variants}
+          activeVariantId={variantId}
+          onSelect={setVariantId}
+        />
 
         <p className="text-sm mb-4 font-bold uppercase tracking-wide">
           {variant.inventory > 0
@@ -88,7 +92,15 @@ export function ProductDetail({ product }: { product: Product }) {
         >
           Add to Bag
         </button>
-      </div>
+      </motion.div>
+
+      {materialOpen && product.materialDetail && (
+        <MaterialExplorer
+          gradient={product.swatch}
+          detail={product.materialDetail}
+          onClose={() => setMaterialOpen(false)}
+        />
+      )}
     </div>
   );
 }

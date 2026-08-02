@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
-import { getProductBySlug, getRelatedProducts } from "@/lib/products";
+import { getProductBySlug, getRelatedProducts, collectionStories } from "@/lib/products";
 import { ProductDetail } from "@/components/product/product-detail";
 import { ProductCard } from "@/components/product/product-card";
+import { CollectionStory } from "@/components/product/collection-story";
 import type { Metadata } from "next";
 
 export async function generateMetadata({
@@ -28,10 +29,13 @@ export default async function ProductPage({
   if (!product) notFound();
 
   const related = getRelatedProducts(product);
+  const story = collectionStories[product.category];
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-12">
       <ProductDetail product={product} />
+
+      {story && <CollectionStory story={story} />}
 
       {related.length > 0 && (
         <section className="mt-24">
