@@ -19,6 +19,7 @@ const NAV_LINKS = [
   { label: "Shop", href: "/shop", menu: SHOP_MENU },
   { label: "Rooms", href: "/rooms" },
   { label: "Materials", href: "/materials" },
+  { label: "Journal", href: "/journal" },
   { label: "New Arrivals", href: "/shop?sort=new" },
   { label: "Sale", href: "/shop?sale=true" },
 ];
@@ -207,7 +208,7 @@ export function SiteHeader() {
               </button>
             </div>
             <nav className="flex-1 overflow-y-auto px-6 py-8 space-y-6">
-              {[...SHOP_MENU, { label: "Rooms", href: "/rooms" }, { label: "Materials", href: "/materials" }, { label: "New Arrivals", href: "/shop?sort=new" }, { label: "Sale", href: "/shop?sale=true" }, { label: "Account", href: "/account" }, { label: "Wishlist", href: "/wishlist" }].map(
+              {[...SHOP_MENU, { label: "Rooms", href: "/rooms" }, { label: "Materials", href: "/materials" }, { label: "Journal", href: "/journal" }, { label: "New Arrivals", href: "/shop?sort=new" }, { label: "Sale", href: "/shop?sale=true" }, { label: "Account", href: "/account" }, { label: "Wishlist", href: "/wishlist" }].map(
                 (link) => (
                   <Link
                     key={link.href}

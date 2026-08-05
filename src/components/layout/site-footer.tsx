@@ -34,11 +34,11 @@ const COLUMNS = [
   {
     title: "Company",
     links: [
-      { label: "About", href: "#" },
-      { label: "Journal", href: "#" },
-      { label: "Sustainability", href: "#" },
-      { label: "Careers", href: "#" },
-      { label: "Trade & Wholesale", href: "#" },
+      { label: "About", href: "/about" },
+      { label: "Journal", href: "/journal" },
+      { label: "Sustainability", href: "/about#sustainability" },
+      { label: "Careers", href: "/careers" },
+      { label: "Trade & Wholesale", href: "/trade" },
     ],
   },
 ];
