@@ -22,6 +22,10 @@ export function isWishlisted(slug: string): boolean {
   return read().includes(slug);
 }
 
+export function readWishlist(): string[] {
+  return read();
+}
+
 export function toggleWishlisted(slug: string): boolean {
   const current = read();
   const next = current.includes(slug)

@@ -23,12 +23,12 @@ const COLUMNS = [
   {
     title: "Customer Service",
     links: [
-      { label: "Contact", href: "#" },
-      { label: "Shipping", href: "#" },
-      { label: "Returns", href: "#" },
-      { label: "FAQ", href: "#" },
-      { label: "Track Order", href: "#" },
-      { label: "Warranty", href: "#" },
+      { label: "Contact", href: "/contact" },
+      { label: "Shipping", href: "/customer-service#shipping" },
+      { label: "Returns", href: "/customer-service#returns" },
+      { label: "FAQ", href: "/customer-service#faq" },
+      { label: "Track Order", href: "/customer-service#track-order" },
+      { label: "Warranty", href: "/customer-service#warranty" },
     ],
   },
   {
