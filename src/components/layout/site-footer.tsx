@@ -93,10 +93,14 @@ export function SiteFooter() {
       <div className="border-t border-paper/10 px-6 py-6">
         <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-paper/50 font-mono">
           <span>&copy; {new Date().getFullYear()} Trenzhome. All rights reserved.</span>
-          <div className="flex items-center gap-5">
-            <Link href="#" className="hover:text-flare transition-colors">Privacy</Link>
-            <Link href="#" className="hover:text-flare transition-colors">Terms</Link>
-            <Link href="#" className="hover:text-flare transition-colors">Accessibility</Link>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            <Link href="/privacy" className="hover:text-flare transition-colors">Privacy</Link>
+            <Link href="/terms" className="hover:text-flare transition-colors">Terms</Link>
+            <Link href="/refund-policy" className="hover:text-flare transition-colors">Refund Policy</Link>
+            <Link href="/shipping-policy" className="hover:text-flare transition-colors">Shipping Policy</Link>
+            <Link href="/cookie-policy" className="hover:text-flare transition-colors">Cookie Policy</Link>
+            <Link href="/accessibility" className="hover:text-flare transition-colors">Accessibility</Link>
+            <Link href="/security-policy" className="hover:text-flare transition-colors">Security</Link>
           </div>
         </div>
       </div>
