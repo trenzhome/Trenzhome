@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Anton, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { CartProvider } from "@/components/cart/cart-context";
 
-const display = Anton({
+const display = Fraunces({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   variable: "--font-display",
 });
 
@@ -42,7 +43,7 @@ export default function RootLayout({
       <body className={`${display.variable} ${body.variable} ${mono.variable}`}>
         <CartProvider>
           <SiteHeader />
-          <main>{children}</main>
+          <main className="pt-[116px]">{children}</main>
           <SiteFooter />
         </CartProvider>
       </body>

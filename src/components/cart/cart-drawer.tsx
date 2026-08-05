@@ -23,11 +23,11 @@ export function CartDrawer() {
   return (
     <div className="fixed inset-0 z-50">
       <div
-        className="absolute inset-0 bg-ink/40"
+        className="absolute inset-0 bg-ink/50 backdrop-blur-sm"
         onClick={closeCart}
         aria-hidden
       />
-      <div className="absolute right-0 top-0 h-full w-full max-w-md bg-paper shadow-2xl flex flex-col">
+      <div className="absolute right-0 top-0 h-full w-full max-w-md bg-paper shadow-luxury flex flex-col rounded-l-3xl overflow-hidden">
         <div className="flex items-center justify-between px-6 h-20 bg-ink text-paper">
           <h2 className="font-display text-2xl">Your Bag</h2>
           <button onClick={closeCart} aria-label="Close cart" className="hover:text-flare transition-colors">
@@ -46,7 +46,7 @@ export function CartDrawer() {
             <div key={line.variantId} className="flex gap-4">
               <MaterialSwatch
                 gradient={line.swatch}
-                className="h-20 w-16 shrink-0"
+                className="h-20 w-16 shrink-0 rounded-xl shadow-soft"
               />
               <div className="flex-1">
                 <p className="font-display text-base leading-snug">
@@ -54,9 +54,9 @@ export function CartDrawer() {
                 </p>
                 <p className="text-sm text-steel">{line.variantTitle}</p>
                 <div className="mt-2 flex items-center justify-between">
-                  <div className="flex items-center border-2 border-ink">
+                  <div className="flex items-center rounded-full border border-ink/15">
                     <button
-                      className="p-1.5"
+                      className="p-1.5 pl-3"
                       aria-label="Decrease quantity"
                       onClick={() =>
                         updateQuantity(line.variantId, line.quantity - 1)
@@ -68,7 +68,7 @@ export function CartDrawer() {
                       {line.quantity}
                     </span>
                     <button
-                      className="p-1.5"
+                      className="p-1.5 pr-3"
                       aria-label="Increase quantity"
                       onClick={() =>
                         updateQuantity(line.variantId, line.quantity + 1)
@@ -93,7 +93,7 @@ export function CartDrawer() {
         </div>
 
         {lines.length > 0 && (
-          <div className="border-t-2 border-ink px-6 py-6 space-y-4">
+          <div className="border-t border-ink/10 px-6 py-6 space-y-4">
             <div className="flex justify-between font-mono text-sm font-bold">
               <span>Subtotal</span>
               <span>${subtotal.toLocaleString()}</span>
@@ -101,10 +101,7 @@ export function CartDrawer() {
             <p className="text-xs text-steel">
               Shipping and tax calculated at checkout.
             </p>
-            <button
-              onClick={handleCheckout}
-              className="w-full bg-ink text-paper py-3.5 text-sm font-bold uppercase tracking-widest2 hover:bg-flare hover:text-ink transition-colors"
-            >
+            <button onClick={handleCheckout} className="btn-flare w-full">
               Checkout
             </button>
           </div>

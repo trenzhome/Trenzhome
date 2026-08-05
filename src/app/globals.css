@@ -12,10 +12,10 @@
   h1,
   h2,
   h3 {
-    @apply font-display uppercase;
+    @apply font-display;
   }
   ::selection {
-    @apply bg-flare/30;
+    @apply bg-flare/25;
   }
   :focus-visible {
     outline: 2px solid theme("colors.flare");
@@ -37,6 +37,18 @@
     @apply font-mono text-[11px] uppercase tracking-widest2 text-steel;
   }
   .btn-flare {
-    @apply inline-block bg-ink text-paper px-8 py-4 text-sm font-bold uppercase tracking-widest2 transition-colors hover:bg-flare;
+    @apply inline-flex items-center justify-center rounded-full bg-ink text-paper px-8 py-4 text-sm font-semibold tracking-wide transition-all duration-300 hover:bg-flare hover:shadow-luxury;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full border border-ink/15 bg-transparent px-8 py-4 text-sm font-semibold tracking-wide text-ink transition-all duration-300 hover:border-ink hover:bg-ink hover:text-paper;
+  }
+  .glass-panel {
+    @apply bg-paper/70 backdrop-blur-glass border border-white/40 shadow-glass;
+  }
+  .glass-dark {
+    @apply bg-ink/60 backdrop-blur-glass border border-white/10;
+  }
+  .card-luxury {
+    @apply rounded-2xl bg-paper shadow-soft transition-shadow duration-500 hover:shadow-luxury;
   }
 }
