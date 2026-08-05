@@ -154,7 +154,9 @@ export function ShowroomViewer({
 
       <div
         className={`relative select-none touch-none ${
-          isFullscreen ? "flex-1 flex items-center justify-center px-8 pb-8" : "aspect-[4/5]"
+          isFullscreen
+            ? "flex-1 flex items-center justify-center px-8 pb-8"
+            : "aspect-[4/5] rounded-2xl overflow-hidden shadow-soft"
         }`}
         style={{ perspective: 1200 }}
         onPointerDown={onPointerDown}
