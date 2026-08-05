@@ -28,7 +28,7 @@ export function MaterialExplorer({
         onClick={onClose}
       >
         <motion.div
-          className="bg-paper max-w-2xl w-full grid md:grid-cols-2"
+          className="bg-paper max-w-2xl w-full grid md:grid-cols-2 rounded-2xl overflow-hidden shadow-luxury"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}

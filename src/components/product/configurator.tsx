@@ -21,10 +21,10 @@ export function Configurator({
           <button
             key={v.id}
             onClick={() => onSelect(v.id)}
-            className={`flex items-center gap-2 border-2 px-4 py-2 text-sm font-bold uppercase transition-colors ${
+            className={`flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium transition-colors ${
               v.id === activeVariantId
                 ? "border-ink bg-ink text-paper"
-                : "border-steel-light hover:border-ink"
+                : "border-ink/15 hover:border-ink"
             }`}
           >
             {v.tint && (
