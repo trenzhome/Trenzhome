@@ -4,15 +4,42 @@ import { Instagram, Facebook, Youtube } from "lucide-react";
 const COLUMNS = [
   {
     title: "Shop",
-    links: ["Living", "Bedding", "Dining", "Lighting", "New Arrivals", "Sale"],
+    links: [
+      { label: "Living", href: "/shop?category=living" },
+      { label: "Bedding", href: "/shop?category=bedding" },
+      { label: "Dining", href: "/shop?category=dining" },
+      { label: "Lighting", href: "/shop?category=lighting" },
+      { label: "New Arrivals", href: "/shop?sort=new" },
+      { label: "Sale", href: "/shop?sale=true" },
+    ],
+  },
+  {
+    title: "Explore",
+    links: [
+      { label: "Rooms", href: "/rooms" },
+      { label: "Materials", href: "/materials" },
+    ],
   },
   {
     title: "Customer Service",
-    links: ["Contact", "Shipping", "Returns", "FAQ", "Track Order", "Warranty"],
+    links: [
+      { label: "Contact", href: "#" },
+      { label: "Shipping", href: "#" },
+      { label: "Returns", href: "#" },
+      { label: "FAQ", href: "#" },
+      { label: "Track Order", href: "#" },
+      { label: "Warranty", href: "#" },
+    ],
   },
   {
     title: "Company",
-    links: ["About", "Journal", "Sustainability", "Careers", "Trade & Wholesale"],
+    links: [
+      { label: "About", href: "#" },
+      { label: "Journal", href: "#" },
+      { label: "Sustainability", href: "#" },
+      { label: "Careers", href: "#" },
+      { label: "Trade & Wholesale", href: "#" },
+    ],
   },
 ];
 
@@ -50,12 +77,12 @@ export function SiteFooter() {
             <p className="eyebrow text-paper/50 mb-4">{col.title}</p>
             <ul className="space-y-2.5">
               {col.links.map((link) => (
-                <li key={link}>
+                <li key={link.label}>
                   <Link
-                    href="#"
+                    href={link.href}
                     className="text-sm text-paper/75 hover:text-flare transition-colors"
                   >
-                    {link}
+                    {link.label}
                   </Link>
                 </li>
               ))}
