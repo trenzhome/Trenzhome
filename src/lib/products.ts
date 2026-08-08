@@ -123,6 +123,7 @@ export const products: Product[] = [
     description:
       "A compact, curved-back armchair upholstered in a dense ivory bouclé, set on turned beechwood legs. Scaled for reading corners and small living rooms alike.",
     basePrice: 890,
+    isNew: true,
     swatch: "linear-gradient(135deg, #EFE9DD, #D2C6AE)",
     variants: [
       { id: "v11", title: "Ivory", price: 890, optionValues: { colour: "Ivory" }, inventory: 11, tint: "#EFE9DD" },

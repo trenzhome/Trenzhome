@@ -1,8 +1,7 @@
 import { products, collectionStories } from "@/lib/products";
-import { ProductCard } from "@/components/product/product-card";
 import { ShopHero } from "@/components/shop/shop-hero";
 import { CategoryRail } from "@/components/shop/category-rail";
-import { ShopFilters } from "@/components/shop/shop-filters";
+import { ShopBrowser } from "@/components/shop/shop-browser";
 import { BuyingGuide } from "@/components/shop/buying-guide";
 import { ShopFaqs } from "@/components/shop/shop-faqs";
 import { RelatedCollections } from "@/components/shop/related-collections";
@@ -96,27 +95,13 @@ export default async function ShopPage({
         <CategoryRail categories={categories} activeCategory={params.category} />
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 py-16 flex flex-col md:flex-row gap-12">
-        <ShopFilters
+      <div className="mx-auto max-w-7xl px-6 py-16">
+        <ShopBrowser
+          products={list}
           categories={categories}
           activeCategory={params.category}
           priceBounds={priceBounds}
         />
-
-        <div className="flex-1">
-          <p className="text-sm text-steel mb-8">
-            {list.length} {list.length === 1 ? "product" : "products"}
-          </p>
-          {list.length === 0 ? (
-            <p className="text-steel">No products match these filters yet.</p>
-          ) : (
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
-              {list.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          )}
-        </div>
       </div>
 
       {story && <CollectionStory story={story} />}

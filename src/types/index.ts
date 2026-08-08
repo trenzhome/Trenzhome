@@ -40,6 +40,7 @@ export interface Product {
   variants: ProductVariant[];
   rating: number;
   reviewCount: number;
+  isNew?: boolean;
   hotspots?: Hotspot[];
   materialDetail?: MaterialDetail;
 }
