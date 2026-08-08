@@ -6,6 +6,9 @@ import { MaterialSwatch } from "./material-swatch";
 export function ProductCard({ product }: { product: Product }) {
   const onSale = product.compareAtPrice && product.compareAtPrice > product.basePrice;
   const lowStock = product.variants.some((v) => v.inventory > 0 && v.inventory <= 4);
+  const swatchColours = Array.from(
+    new Set(product.variants.map((v) => v.tint).filter((t): t is string => Boolean(t)))
+  );
 
   return (
     <Link href={`/product/${product.slug}`} className="group block">
@@ -32,6 +35,17 @@ export function ProductCard({ product }: { product: Product }) {
         {product.title}
       </h3>
       <p className="text-sm text-steel mt-1">{product.material}</p>
+      {swatchColours.length > 1 && (
+        <div className="mt-2 flex items-center gap-1.5">
+          {swatchColours.map((tint) => (
+            <span
+              key={tint}
+              className="h-3.5 w-3.5 rounded-full ring-1 ring-inset ring-ink/15"
+              style={{ backgroundColor: tint }}
+            />
+          ))}
+        </div>
+      )}
       <div className="mt-2 flex items-center gap-1">
         <Star size={13} fill="currentColor" strokeWidth={0} className="text-flare" />
         <span className="text-xs text-steel font-mono">

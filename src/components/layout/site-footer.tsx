@@ -90,6 +90,18 @@ export function SiteFooter() {
           </div>
         ))}
       </div>
+      <div className="border-t border-paper/10 px-6 py-5">
+        <div className="mx-auto max-w-7xl flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[11px] font-mono uppercase tracking-wide text-paper/40">
+          <span>Secure checkout</span>
+          <span aria-hidden>&middot;</span>
+          {["Visa", "Mastercard", "Amex", "PayPal", "Apple Pay"].map((method) => (
+            <span key={method} className="rounded border border-paper/15 px-2 py-1">
+              {method}
+            </span>
+          ))}
+        </div>
+      </div>
+
       <div className="border-t border-paper/10 px-6 py-6">
         <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-paper/50 font-mono">
           <span>&copy; {new Date().getFullYear()} Trenzhome. All rights reserved.</span>

@@ -4,6 +4,7 @@ import { ProductCard } from "@/components/product/product-card";
 import { MaterialSwatch } from "@/components/product/material-swatch";
 import { Hero } from "@/components/home/hero";
 import { Reveal } from "@/components/home/reveal";
+import { ShopTheLook } from "@/components/home/shop-the-look";
 import { Testimonials } from "@/components/home/testimonials";
 import { Newsletter } from "@/components/home/newsletter";
 
@@ -52,6 +53,8 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      <ShopTheLook />
 
       {/* Featured products */}
       <section className="bg-fog py-24 md:py-32">

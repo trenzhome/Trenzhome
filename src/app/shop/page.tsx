@@ -1,6 +1,7 @@
 import { products, collectionStories } from "@/lib/products";
 import { ProductCard } from "@/components/product/product-card";
 import { ShopHero } from "@/components/shop/shop-hero";
+import { CategoryRail } from "@/components/shop/category-rail";
 import { ShopFilters } from "@/components/shop/shop-filters";
 import { BuyingGuide } from "@/components/shop/buying-guide";
 import { ShopFaqs } from "@/components/shop/shop-faqs";
@@ -89,6 +90,10 @@ export default async function ShopPage({
     <>
       <div className="mx-auto max-w-7xl px-6 pt-6">
         <ShopHero title={heroTitle} copy={heroCopy} swatch={heroSwatch} />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 pt-12">
+        <CategoryRail categories={categories} activeCategory={params.category} />
       </div>
 
       <div className="mx-auto max-w-7xl px-6 py-16 flex flex-col md:flex-row gap-12">

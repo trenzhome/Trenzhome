@@ -3,6 +3,7 @@ import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { TrustStrip } from "@/components/layout/trust-strip";
 import { CartProvider } from "@/components/cart/cart-context";
 
 const display = Fraunces({
@@ -44,6 +45,7 @@ export default function RootLayout({
         <CartProvider>
           <SiteHeader />
           <main className="pt-[116px]">{children}</main>
+          <TrustStrip />
           <SiteFooter />
         </CartProvider>
       </body>

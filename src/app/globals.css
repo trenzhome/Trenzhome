@@ -51,4 +51,11 @@
   .card-luxury {
     @apply rounded-2xl bg-paper shadow-soft transition-shadow duration-500 hover:shadow-luxury;
   }
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
 }

@@ -7,6 +7,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Search, Heart, User, ShoppingBag, Menu, X, ChevronDown } from "lucide-react";
 import { useCart } from "@/components/cart/cart-context";
 import { CartDrawer } from "@/components/cart/cart-drawer";
+import { MaterialSwatch } from "@/components/product/material-swatch";
+import { products } from "@/lib/products";
 
 const SHOP_MENU = [
   { label: "Living", href: "/shop?category=living" },
@@ -89,16 +91,37 @@ export function SiteHeader() {
                         transition={{ duration: 0.2, ease: "easeOut" }}
                         className="absolute left-1/2 top-full -translate-x-1/2 pt-4"
                       >
-                        <div className="glass-panel rounded-2xl p-6 flex gap-8 text-ink whitespace-nowrap">
-                          {link.menu.map((item) => (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              className="text-sm font-medium hover:text-flare transition-colors"
-                            >
-                              {item.label}
-                            </Link>
-                          ))}
+                        <div className="glass-panel rounded-2xl p-6 flex items-stretch gap-6 text-ink whitespace-nowrap">
+                          <div className="flex flex-col gap-4 justify-center min-w-[140px]">
+                            {link.menu.map((item) => (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className="text-sm font-medium hover:text-flare transition-colors"
+                              >
+                                {item.label}
+                              </Link>
+                            ))}
+                          </div>
+                          <div className="w-px bg-ink/10" />
+                          <Link
+                            href="/shop?sort=new"
+                            className="group relative block w-36 shrink-0 aspect-[3/4] overflow-hidden rounded-xl"
+                          >
+                            <MaterialSwatch
+                              gradient={products[0].swatch}
+                              className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
+                            <div className="absolute inset-x-0 bottom-0 p-3">
+                              <p className="font-mono text-[10px] uppercase tracking-widest2 text-paper/70 mb-0.5">
+                                New
+                              </p>
+                              <p className="font-display text-sm text-paper leading-tight">
+                                Shop the Edit
+                              </p>
+                            </div>
+                          </Link>
                         </div>
                       </motion.div>
                     )}

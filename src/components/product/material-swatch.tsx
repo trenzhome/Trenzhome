@@ -1,14 +1,18 @@
+import type { CSSProperties } from "react";
+
 export function MaterialSwatch({
   gradient,
   className = "",
+  style,
 }: {
   gradient: string;
   className?: string;
+  style?: CSSProperties;
 }) {
   return (
     <div
       className={`relative overflow-hidden ${className}`}
-      style={{ background: gradient }}
+      style={{ background: gradient, ...style }}
     >
       {/* subtle woven-texture overlay so swatches read as material, not flat color */}
       <div
