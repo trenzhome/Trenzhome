@@ -4,22 +4,64 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { Search, Heart, User, ShoppingBag, Menu, X, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Search,
+  Heart,
+  User,
+  ShoppingBag,
+  Menu,
+  X,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Globe,
+} from "lucide-react";
 import { useCart } from "@/components/cart/cart-context";
 import { CartDrawer } from "@/components/cart/cart-drawer";
-import { MaterialSwatch } from "@/components/product/material-swatch";
+import { SearchBar } from "@/components/layout/search-bar";
+import { MegaMenu, type MegaMenuTile, type MegaMenuPromo } from "@/components/layout/mega-menu";
 import { products } from "@/lib/products";
+import { rooms } from "@/lib/rooms";
 
-const SHOP_MENU = [
+const SHOP_CATEGORY_LINKS = [
   { label: "Living", href: "/shop?category=living" },
-  { label: "Bedding", href: "/shop?category=bedding" },
   { label: "Dining", href: "/shop?category=dining" },
+  { label: "Bedding", href: "/shop?category=bedding" },
   { label: "Lighting", href: "/shop?category=lighting" },
+  { label: "Kitchen & Dining", href: `/shop?category=${encodeURIComponent("kitchen & dining")}` },
 ];
 
+const SHOP_TILES: MegaMenuTile[] = [
+  { ...SHOP_CATEGORY_LINKS[0], swatch: products[0].swatch },
+  { ...SHOP_CATEGORY_LINKS[1], swatch: products[1].swatch },
+  { ...SHOP_CATEGORY_LINKS[2], swatch: products[2].swatch },
+  { ...SHOP_CATEGORY_LINKS[3], swatch: products[3].swatch },
+  { ...SHOP_CATEGORY_LINKS[4], swatch: products[5].swatch },
+  { label: "All Products", href: "/shop" },
+];
+
+const SHOP_PROMO: MegaMenuPromo = {
+  eyebrow: "New",
+  label: "Shop the Edit",
+  href: "/shop?sort=new",
+  swatch: products[0].swatch,
+};
+
+const ROOM_TILES: MegaMenuTile[] = [
+  ...rooms.slice(0, 7).map((r) => ({ label: r.name, href: `/rooms/${r.slug}`, swatch: r.heroSwatch })),
+  { label: "All Rooms", href: "/rooms" },
+];
+
+const ROOM_PROMO: MegaMenuPromo = {
+  eyebrow: "Curated",
+  label: "Shop by Room",
+  href: "/rooms",
+  swatch: products[4].swatch,
+};
+
 const NAV_LINKS = [
-  { label: "Shop", href: "/shop", menu: SHOP_MENU },
-  { label: "Rooms", href: "/rooms" },
+  { label: "Shop", href: "/shop", menu: { tiles: SHOP_TILES, promo: SHOP_PROMO } },
+  { label: "Rooms", href: "/rooms", menu: { tiles: ROOM_TILES, promo: ROOM_PROMO } },
   { label: "Materials", href: "/materials" },
   { label: "Journal", href: "/journal" },
   { label: "New Arrivals", href: "/shop?sort=new", badge: { text: "New", tone: "new" as const } },
@@ -106,88 +148,31 @@ export function SiteHeader() {
       </div>
 
       <header
-        className={`h-20 transition-colors duration-500 ${
+        className={`transition-colors duration-500 ${
           solid ? "glass-panel" : "bg-transparent border-b border-transparent"
         } ${!solid ? "text-paper" : "text-ink"}`}
       >
         <div className="mx-auto max-w-7xl px-6">
-          <div className="flex h-20 items-center justify-between">
-            <Link href="/" className="font-display text-2xl md:text-3xl tracking-tight">
+          <div className="flex h-20 items-center gap-4">
+            <Link href="/" className="font-display text-2xl md:text-3xl tracking-tight shrink-0">
               Trenzhome
             </Link>
 
-            <nav
-              className="hidden md:flex items-center gap-9"
-              onMouseLeave={() => setOpenMenu(null)}
-            >
-              {NAV_LINKS.map((link) => (
-                <div
-                  key={link.href}
-                  className="relative"
-                  onMouseEnter={() => setOpenMenu(link.menu ? link.label : null)}
-                >
-                  <Link
-                    href={link.href}
-                    className="flex items-center gap-1.5 text-sm font-medium tracking-wide opacity-90 hover:opacity-100 hover:text-flare transition-colors"
-                  >
-                    {link.label}
-                    {"badge" in link && link.badge && <NavBadge badge={link.badge} />}
-                    {link.menu && <ChevronDown size={13} strokeWidth={2} />}
-                  </Link>
+            <SearchBar solid={solid} />
 
-                  <AnimatePresence>
-                    {link.menu && openMenu === link.label && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 8 }}
-                        transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="absolute left-1/2 top-full -translate-x-1/2 pt-4"
-                      >
-                        <div className="glass-panel rounded-2xl p-6 flex items-stretch gap-6 text-ink whitespace-nowrap">
-                          <div className="flex flex-col gap-4 justify-center min-w-[140px]">
-                            {link.menu.map((item) => (
-                              <Link
-                                key={item.href}
-                                href={item.href}
-                                className="text-sm font-medium hover:text-flare transition-colors"
-                              >
-                                {item.label}
-                              </Link>
-                            ))}
-                          </div>
-                          <div className="w-px bg-ink/10" />
-                          <Link
-                            href="/shop?sort=new"
-                            className="group relative block w-36 shrink-0 aspect-[3/4] overflow-hidden rounded-xl"
-                          >
-                            <MaterialSwatch
-                              gradient={products[0].swatch}
-                              className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
-                            <div className="absolute inset-x-0 bottom-0 p-3">
-                              <p className="font-mono text-[10px] uppercase tracking-widest2 text-paper/70 mb-0.5">
-                                New
-                              </p>
-                              <p className="font-display text-sm text-paper leading-tight">
-                                Shop the Edit
-                              </p>
-                            </div>
-                          </Link>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
-            </nav>
-
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-5 ml-auto">
+              <span
+                className={`hidden md:flex items-center gap-1.5 text-xs font-medium ${
+                  solid ? "text-steel" : "text-paper/70"
+                }`}
+              >
+                <Globe size={15} strokeWidth={1.75} />
+                United States &middot; USD $
+              </span>
               <button
                 aria-label="Open search"
                 onClick={() => setSearchOpen(true)}
-                className="hover:text-flare transition-colors"
+                className="lg:hidden hover:text-flare transition-colors"
               >
                 <Search size={19} strokeWidth={1.75} />
               </button>
@@ -218,6 +203,42 @@ export function SiteHeader() {
               </button>
             </div>
           </div>
+
+          <nav
+            className="hidden md:flex items-center gap-9 h-12 border-t border-current/10"
+            onMouseLeave={() => setOpenMenu(null)}
+          >
+            {NAV_LINKS.map((link) => (
+              <div
+                key={link.href}
+                className="relative h-full flex items-center"
+                onMouseEnter={() => setOpenMenu(link.menu ? link.label : null)}
+              >
+                <Link
+                  href={link.href}
+                  className="flex items-center gap-1.5 text-sm font-medium tracking-wide opacity-90 hover:opacity-100 hover:text-flare transition-colors"
+                >
+                  {link.label}
+                  {"badge" in link && link.badge && <NavBadge badge={link.badge} />}
+                  {link.menu && <ChevronDown size={13} strokeWidth={2} />}
+                </Link>
+
+                <AnimatePresence>
+                  {link.menu && openMenu === link.label && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      className="absolute left-1/2 top-full -translate-x-1/2 pt-0"
+                    >
+                      <MegaMenu tiles={link.menu.tiles} promo={link.menu.promo} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </nav>
         </div>
       </header>
       </div>
@@ -285,7 +306,7 @@ export function SiteHeader() {
             </div>
             <nav className="flex-1 overflow-y-auto px-6 py-8 space-y-6">
               {[
-                ...SHOP_MENU,
+                ...SHOP_CATEGORY_LINKS,
                 { label: "Rooms", href: "/rooms" },
                 { label: "Materials", href: "/materials" },
                 { label: "Journal", href: "/journal" },

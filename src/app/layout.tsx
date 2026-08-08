@@ -44,7 +44,7 @@ export default function RootLayout({
       <body className={`${display.variable} ${body.variable} ${mono.variable}`}>
         <CartProvider>
           <SiteHeader />
-          <main className="pt-[116px]">{children}</main>
+          <main className="pt-[116px] md:pt-[164px]">{children}</main>
           <TrustStrip />
           <SiteFooter />
         </CartProvider>

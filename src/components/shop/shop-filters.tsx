@@ -3,14 +3,6 @@
 import { useEffect, useState } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
-const SORT_OPTIONS = [
-  { value: "featured", label: "Featured" },
-  { value: "new", label: "Newest" },
-  { value: "price-asc", label: "Price: Low to High" },
-  { value: "price-desc", label: "Price: High to Low" },
-  { value: "rating", label: "Top Rated" },
-];
-
 export function ShopFilters({
   categories,
   activeCategory,
@@ -58,10 +50,8 @@ export function ShopFilters({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [minPrice, maxPrice]);
 
-  const activeSort = searchParams.get("sort") ?? "featured";
-
   return (
-    <aside className="md:sticky md:top-[132px] md:self-start md:w-56 shrink-0 space-y-10">
+    <aside className="md:sticky md:top-[180px] md:self-start md:w-56 shrink-0 space-y-10">
       <div>
         <p className="eyebrow mb-4">Category</p>
         <ul className="space-y-2">
@@ -113,21 +103,6 @@ export function ShopFilters({
             className="absolute inset-x-0 top-1/2 -translate-y-1/2 w-full accent-flare pointer-events-none [&::-webkit-slider-thumb]:pointer-events-auto [&::-moz-range-thumb]:pointer-events-auto"
           />
         </div>
-      </div>
-
-      <div>
-        <p className="eyebrow mb-4">Sort By</p>
-        <select
-          value={activeSort}
-          onChange={(e) => updateParam("sort", e.target.value === "featured" ? null : e.target.value)}
-          className="w-full rounded-full border border-ink/15 bg-transparent px-4 py-2.5 text-sm focus:outline-none focus:border-flare"
-        >
-          {SORT_OPTIONS.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
       </div>
     </aside>
   );

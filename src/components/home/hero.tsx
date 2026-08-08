@@ -21,7 +21,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative -mt-[116px] min-h-[92vh] pt-[116px] bg-ink text-paper overflow-hidden flex items-center">
+    <section className="relative -mt-[116px] md:-mt-[164px] min-h-[92vh] pt-[116px] md:pt-[164px] bg-ink text-paper overflow-hidden flex items-center">
       {/* Cinematic background — material-swatch gradients stand in for lifestyle photography/video
           until real 4K assets are available; this section is built to accept a <video> or
           Next.js <Image> background directly in its place. */}

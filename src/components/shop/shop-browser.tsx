@@ -2,19 +2,30 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { SlidersHorizontal, Columns3, GitCompare, X } from "lucide-react";
 import { Product } from "@/types";
 import { ProductCard } from "@/components/product/product-card";
 import { MaterialSwatch } from "@/components/product/material-swatch";
 import { ShopFilters } from "./shop-filters";
 
-const COLUMN_OPTIONS = [2, 3, 4] as const;
+const COLUMN_OPTIONS = [6, 5, 4, 3, 2] as const;
 const COLUMN_CLASSES: Record<number, string> = {
   2: "lg:grid-cols-2",
   3: "lg:grid-cols-3",
   4: "lg:grid-cols-4",
+  5: "lg:grid-cols-5",
+  6: "lg:grid-cols-6",
 };
 const MAX_COMPARE = 3;
+
+const SORT_OPTIONS = [
+  { value: "featured", label: "Featured" },
+  { value: "new", label: "Newest" },
+  { value: "price-asc", label: "Price: Low to High" },
+  { value: "price-desc", label: "Price: High to Low" },
+  { value: "rating", label: "Top Rated" },
+];
 
 export function ShopBrowser({
   products,
@@ -27,11 +38,28 @@ export function ShopBrowser({
   activeCategory?: string;
   priceBounds: { min: number; max: number };
 }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [columns, setColumns] = useState<number>(3);
   const [compareMode, setCompareMode] = useState(false);
   const [compareSlugs, setCompareSlugs] = useState<string[]>([]);
   const [comparePanelOpen, setComparePanelOpen] = useState(false);
+
+  const activeSort = searchParams.get("sort") ?? "featured";
+
+  function updateSort(value: string) {
+    const params = new URLSearchParams(searchParams.toString());
+    if (value === "featured") {
+      params.delete("sort");
+    } else {
+      params.set("sort", value);
+    }
+    const next = params.toString();
+    router.push(`${pathname}${next ? `?${next}` : ""}`, { scroll: false });
+  }
 
   function toggleCompare(slug: string) {
     setCompareSlugs((cur) => {
@@ -73,6 +101,17 @@ export function ShopBrowser({
             <p className="text-sm text-steel">
               {products.length} {products.length === 1 ? "product" : "products"}
             </p>
+            <select
+              value={activeSort}
+              onChange={(e) => updateSort(e.target.value)}
+              className="text-sm font-medium bg-transparent focus:outline-none hover:text-flare transition-colors cursor-pointer"
+            >
+              {SORT_OPTIONS.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="flex items-center gap-5">
