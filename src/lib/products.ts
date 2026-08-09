@@ -39,6 +39,14 @@ export const collectionStories: Record<string, CollectionStory> = {
     title: "The Cushions Collection",
     copy: "The fast way to change a room — covers, inserts, and shapes sized to fit what you already own.",
   },
+  Bath: {
+    title: "The Bath Collection",
+    copy: "Absorbent, fast-drying, and built to hold up to daily washing — the towels and mats that outlast a hotel-quality first impression.",
+  },
+  Decor: {
+    title: "The Decor Collection",
+    copy: "The small, handmade details — woven, cast, or knotted by hand — that make a room feel finished rather than furnished.",
+  },
 };
 
 export async function getProducts(): Promise<Product[]> {

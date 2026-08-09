@@ -50,6 +50,8 @@ const KNOWN_CATEGORIES = [
   "Storage",
   "Curtains",
   "Cushions",
+  "Bath",
+  "Decor",
 ];
 
 // Colour words that appear in this catalog's variant options, mapped to a
