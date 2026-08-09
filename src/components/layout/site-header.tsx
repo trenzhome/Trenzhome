@@ -170,7 +170,7 @@ export function SiteHeader({
                 }`}
               >
                 <Globe size={15} strokeWidth={1.75} />
-                United States &middot; USD $
+                Australia &middot; AUD $
               </span>
               <button
                 aria-label="Open search"
