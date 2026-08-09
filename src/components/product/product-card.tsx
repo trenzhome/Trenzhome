@@ -121,12 +121,14 @@ export function ProductCard({
           ))}
         </div>
       )}
-      <div className="mt-2 flex items-center gap-1">
-        <Star size={13} fill="currentColor" strokeWidth={0} className="text-flare" />
-        <span className="text-xs text-steel font-mono">
-          {product.rating} ({product.reviewCount})
-        </span>
-      </div>
+      {product.rating != null && product.reviewCount != null && (
+        <div className="mt-2 flex items-center gap-1">
+          <Star size={13} fill="currentColor" strokeWidth={0} className="text-flare" />
+          <span className="text-xs text-steel font-mono">
+            {product.rating} ({product.reviewCount})
+          </span>
+        </div>
+      )}
       <div className="mt-2 flex items-baseline gap-2 font-mono text-sm">
         <span className="text-ink font-bold">${product.basePrice.toLocaleString()}</span>
         {onSale && (

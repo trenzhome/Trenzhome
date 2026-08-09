@@ -5,21 +5,29 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Star, BadgeCheck } from "lucide-react";
 import { Product } from "@/types";
 
-function SampleReviews({ product }: { product: Product }) {
+function SampleReviews({
+  product,
+  rating,
+  reviewCount,
+}: {
+  product: Product;
+  rating: number;
+  reviewCount: number;
+}) {
   const reviews = [
     {
       name: "S. Whitfield",
-      rating: Math.min(5, Math.round(product.rating)),
+      rating: Math.min(5, Math.round(rating)),
       body: `Exactly as described — the ${product.material.split(",")[0].toLowerCase()} is even better in person than in the photos.`,
     },
     {
       name: "D. Njoroge",
-      rating: Math.max(3, Math.round(product.rating) - 1),
+      rating: Math.max(3, Math.round(rating) - 1),
       body: "Shipping took a bit longer than the estimate, but the piece itself is excellent quality.",
     },
     {
       name: "L. Marchetti",
-      rating: Math.min(5, Math.round(product.rating)),
+      rating: Math.min(5, Math.round(rating)),
       body: "Ordered a second one for the guest room. Consistent quality between both.",
     },
   ];
@@ -29,11 +37,11 @@ function SampleReviews({ product }: { product: Product }) {
       <div className="flex items-center gap-3">
         <div className="flex text-flare">
           {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} size={16} fill={i < Math.round(product.rating) ? "currentColor" : "none"} strokeWidth={1.5} />
+            <Star key={i} size={16} fill={i < Math.round(rating) ? "currentColor" : "none"} strokeWidth={1.5} />
           ))}
         </div>
         <span className="text-sm text-steel">
-          {product.rating} out of 5 &middot; {product.reviewCount} reviews
+          {rating} out of 5 &middot; {reviewCount} reviews
         </span>
       </div>
       <div className="space-y-5">
@@ -112,7 +120,13 @@ export function ProductTabs({ product }: { product: Product }) {
         </div>
       ),
     },
-    { id: "reviews", label: `Reviews (${product.reviewCount})`, content: <SampleReviews product={product} /> },
+    ...(product.rating != null && product.reviewCount != null
+      ? [{
+          id: "reviews",
+          label: `Reviews (${product.reviewCount})`,
+          content: <SampleReviews product={product} rating={product.rating} reviewCount={product.reviewCount} />,
+        }]
+      : []),
     { id: "faqs", label: "FAQs", content: <Faqs /> },
   ];
 

@@ -56,7 +56,7 @@ export default async function ShopPage({
       list.sort((a, b) => b.basePrice - a.basePrice);
       break;
     case "rating":
-      list.sort((a, b) => b.rating - a.rating);
+      list.sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0));
       break;
   }
 

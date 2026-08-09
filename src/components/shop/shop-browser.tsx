@@ -251,7 +251,7 @@ export function ShopBrowser({
                     <div className="flex justify-between gap-2 border-t border-ink/10 pt-2.5">
                       <dt className="text-steel">Rating</dt>
                       <dd className="font-mono text-right">
-                        {p.rating} ({p.reviewCount})
+                        {p.rating != null && p.reviewCount != null ? `${p.rating} (${p.reviewCount})` : "—"}
                       </dd>
                     </div>
                   </dl>

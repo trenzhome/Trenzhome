@@ -83,21 +83,25 @@ export function ProductDetail({ product }: { product: Product }) {
         <h1 className="font-display text-5xl mb-3">{product.title}</h1>
 
         <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-2">
-            <div className="flex text-flare">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  size={15}
-                  fill={i < Math.round(product.rating) ? "currentColor" : "none"}
-                  strokeWidth={1.5}
-                />
-              ))}
+          {product.rating != null && product.reviewCount != null ? (
+            <div className="flex items-center gap-2">
+              <div className="flex text-flare">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    size={15}
+                    fill={i < Math.round(product.rating!) ? "currentColor" : "none"}
+                    strokeWidth={1.5}
+                  />
+                ))}
+              </div>
+              <span className="text-sm text-steel">
+                {product.rating} ({product.reviewCount} reviews)
+              </span>
             </div>
-            <span className="text-sm text-steel">
-              {product.rating} ({product.reviewCount} reviews)
-            </span>
-          </div>
+          ) : (
+            <div />
+          )}
           <ProductActions slug={product.slug} title={product.title} />
         </div>
 
