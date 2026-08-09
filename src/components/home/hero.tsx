@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { products } from "@/lib/products";
 import { MaterialSwatch } from "@/components/product/material-swatch";
 
-export function Hero() {
+const DEFAULT_SWATCH = "linear-gradient(135deg, #D9CBB5, #B8A582)";
+
+export function Hero({ swatch = DEFAULT_SWATCH }: { swatch?: string }) {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -38,7 +39,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-ink/10" />
       <div className="absolute right-[-8%] top-1/2 -translate-y-1/2 w-[55%] aspect-[3/4] hidden md:block opacity-90">
         <MaterialSwatch
-          gradient={products[0].swatch}
+          gradient={swatch}
           className="h-full w-full rounded-3xl shadow-luxury ring-1 ring-paper/10 -rotate-3"
         />
       </div>

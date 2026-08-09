@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { MaterialSwatch } from "@/components/product/material-swatch";
-import { products } from "@/lib/products";
+import { Product } from "@/types";
 
 export function CategoryRail({
   categories,
   activeCategory,
+  products,
 }: {
   categories: string[];
   activeCategory?: string;
+  products: Product[];
 }) {
   const items = [
     { label: "All Products", value: undefined, swatch: undefined },

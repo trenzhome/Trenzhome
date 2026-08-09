@@ -1,6 +1,7 @@
-import { products } from "@/lib/products";
+import { getProducts } from "@/lib/products";
 
-export default function AdminDashboard() {
+export default async function AdminDashboard() {
+  const products = await getProducts();
   const totalUnits = products.reduce(
     (sum, p) => sum + p.variants.reduce((s, v) => s + v.inventory, 0),
     0

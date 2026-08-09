@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Plus, ArrowUpRight } from "lucide-react";
-import { products } from "@/lib/products";
+import { Product } from "@/types";
 import { MaterialSwatch } from "@/components/product/material-swatch";
 import { Reveal } from "./reveal";
 
@@ -18,7 +18,7 @@ const SCENE = [
   { slug: "moraine-brass-pendant", x: 52, y: 16, shape: "pendant" as const },
 ];
 
-export function ShopTheLook() {
+export function ShopTheLook({ products }: { products: Product[] }) {
   const [active, setActive] = useState<string | null>(null);
 
   return (

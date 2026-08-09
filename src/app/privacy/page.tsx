@@ -17,11 +17,11 @@ export default function PrivacyPage() {
 
       <LegalSection title="What We Collect">
         <p>
-          <strong>At checkout:</strong> we use Stripe Checkout for payment. When you check out, Stripe
+          <strong>At checkout:</strong> we use Shopify Checkout for payment. When you check out, Shopify
           collects your name, email, shipping address, and payment details directly — this
-          information passes through Stripe&rsquo;s hosted checkout page and doesn&rsquo;t touch our
+          information passes through Shopify&rsquo;s hosted checkout page and doesn&rsquo;t touch our
           servers directly. We receive your order details (items purchased, shipping address, email)
-          from Stripe to fulfil your order.
+          from Shopify to fulfil your order.
         </p>
         <p>
           <strong>On your device:</strong> your wishlist and recently-viewed products are stored using
@@ -44,14 +44,14 @@ export default function PrivacyPage() {
 
       <LegalSection title="How Payment Information Is Handled">
         <p>
-          We never see or store your full card number. Stripe is PCI-DSS compliant and handles all
+          We never see or store your full card number. Shopify is PCI-DSS compliant and handles all
           payment data directly; our systems only ever see a payment confirmation and order total.
         </p>
       </LegalSection>
 
       <LegalSection title="Who We Share Data With">
         <p>
-          Stripe, to process payment and collect shipping details for order fulfilment. We don&rsquo;t
+          Shopify, to process payment and collect shipping details for order fulfilment. We don&rsquo;t
           sell, rent, or share your information with advertisers or data brokers.
         </p>
       </LegalSection>
@@ -61,8 +61,8 @@ export default function PrivacyPage() {
           If you&rsquo;re located in the European Economic Area, you have the right to request access
           to, correction of, or deletion of personal data we hold about you, and to object to or
           restrict how it&rsquo;s processed. Given the current scope of what we collect (order data
-          held by Stripe, and device-local wishlist data we never receive), most requests will point
-          back to Stripe&rsquo;s own privacy controls or simply require clearing your browser storage.
+          held by Shopify, and device-local wishlist data we never receive), most requests will point
+          back to Shopify&rsquo;s own privacy controls or simply require clearing your browser storage.
           Contact us at the address below for anything else.
         </p>
       </LegalSection>
@@ -77,7 +77,7 @@ export default function PrivacyPage() {
 
       <LegalSection title="Data Retention">
         <p>
-          Order and payment data is retained by Stripe per their own retention policy. We don&rsquo;t
+          Order and payment data is retained by Shopify per their own retention policy. We don&rsquo;t
           currently operate a database that stores customer accounts or order history on our end — see
           our <Link href="/account" className="underline hover:text-flare">Account</Link> page for
           where that stands.

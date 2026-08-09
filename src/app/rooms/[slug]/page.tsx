@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { rooms, getRoomBySlug } from "@/lib/rooms";
-import { products } from "@/lib/products";
+import { getProducts } from "@/lib/products";
 import { RoomHero } from "@/components/rooms/room-hero";
 import { ColorPalette } from "@/components/rooms/color-palette";
 import { StyleGuide } from "@/components/rooms/style-guide";
@@ -32,6 +32,7 @@ export default async function RoomPage({
   const room = getRoomBySlug(slug);
   if (!room) notFound();
 
+  const products = await getProducts();
   const curated = products.filter((p) =>
     room.categories.some((c) => c.toLowerCase() === p.category.toLowerCase())
   );

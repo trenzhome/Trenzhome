@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { materials, getMaterialBySlug } from "@/lib/materials";
-import { products } from "@/lib/products";
+import { getProducts } from "@/lib/products";
 import { MaterialHero } from "@/components/materials/material-hero";
 import { MaterialFacts } from "@/components/materials/material-facts";
 import { ProductGridOrEmpty } from "@/components/shop/product-grid-or-empty";
@@ -31,6 +31,7 @@ export default async function MaterialPage({
   const material = getMaterialBySlug(slug);
   if (!material) notFound();
 
+  const products = await getProducts();
   const recommended = material.productMatch
     ? products.filter(
         (p) =>

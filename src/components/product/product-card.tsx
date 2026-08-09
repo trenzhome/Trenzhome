@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Star, Heart, Check } from "lucide-react";
 import { Product } from "@/types";
 import { MaterialSwatch } from "./material-swatch";
@@ -38,10 +39,20 @@ export function ProductCard({
   return (
     <Link href={`/product/${product.slug}`} className="group block">
       <div className="relative aspect-[4/5] mb-4 overflow-hidden rounded-2xl shadow-soft transition-shadow duration-500 group-hover:shadow-luxury">
-        <MaterialSwatch
-          gradient={product.swatch}
-          className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-105"
-        />
+        {product.image ? (
+          <Image
+            src={product.image}
+            alt={product.title}
+            fill
+            sizes="(min-width: 1024px) 25vw, 50vw"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          />
+        ) : (
+          <MaterialSwatch
+            gradient={product.swatch}
+            className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-105"
+          />
+        )}
         <div className="absolute left-3 top-3 flex flex-col gap-1.5">
           {product.isNew && (
             <span className="rounded-full bg-ink text-paper text-[10px] font-bold uppercase tracking-widest2 px-2.5 py-1">

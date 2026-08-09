@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { products, collectionStories } from "@/lib/products";
+import { getProducts, collectionStories } from "@/lib/products";
 import { ProductCard } from "@/components/product/product-card";
 import { MaterialSwatch } from "@/components/product/material-swatch";
 import { Hero } from "@/components/home/hero";
@@ -8,19 +8,25 @@ import { ShopTheLook } from "@/components/home/shop-the-look";
 import { Testimonials } from "@/components/home/testimonials";
 import { Newsletter } from "@/components/home/newsletter";
 
-const ROOMS = [
-  { label: "Living Room", category: "living", swatch: products[0].swatch },
-  { label: "Bedroom", category: "bedding", swatch: products[2].swatch },
-  { label: "Dining Room", category: "dining", swatch: products[1].swatch },
-  { label: "Lighting", category: "lighting", swatch: products[3].swatch },
-];
+export const dynamic = "force-dynamic";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const products = await getProducts();
+  const bySwatch = (category: string) =>
+    products.find((p) => p.category === category)?.swatch ?? products[0]?.swatch;
+
+  const ROOMS = [
+    { label: "Living Room", category: "living", swatch: bySwatch("Living") },
+    { label: "Bedroom", category: "bedding", swatch: bySwatch("Bedding") },
+    { label: "Dining Room", category: "dining", swatch: bySwatch("Dining") },
+    { label: "Lighting", category: "lighting", swatch: bySwatch("Lighting") },
+  ];
+
   const featured = products.slice(0, 4);
 
   return (
     <>
-      <Hero />
+      <Hero swatch={products[0]?.swatch} />
 
       {/* Featured collections */}
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
@@ -54,7 +60,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <ShopTheLook />
+      <ShopTheLook products={products} />
 
       {/* Featured products */}
       <section className="bg-fog py-24 md:py-32">
@@ -93,7 +99,7 @@ export default function HomePage() {
             >
               <Reveal direction={i % 2 === 1 ? "right" : "left"}>
                 <MaterialSwatch
-                  gradient={products[i * 2]?.swatch ?? products[0].swatch}
+                  gradient={products[i * 2]?.swatch ?? products[0]?.swatch}
                   className="aspect-[4/5] rounded-2xl shadow-soft"
                 />
               </Reveal>

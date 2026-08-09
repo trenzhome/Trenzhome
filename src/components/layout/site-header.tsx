@@ -20,8 +20,9 @@ import { useCart } from "@/components/cart/cart-context";
 import { CartDrawer } from "@/components/cart/cart-drawer";
 import { SearchBar } from "@/components/layout/search-bar";
 import { MegaMenu, type MegaMenuTile, type MegaMenuPromo } from "@/components/layout/mega-menu";
-import { products } from "@/lib/products";
 import { rooms } from "@/lib/rooms";
+
+const DEFAULT_SWATCH = "linear-gradient(135deg, #D9CBB5, #B8A582)";
 
 const SHOP_CATEGORY_LINKS = [
   { label: "Living", href: "/shop?category=living" },
@@ -31,41 +32,9 @@ const SHOP_CATEGORY_LINKS = [
   { label: "Kitchen & Dining", href: `/shop?category=${encodeURIComponent("kitchen & dining")}` },
 ];
 
-const SHOP_TILES: MegaMenuTile[] = [
-  { ...SHOP_CATEGORY_LINKS[0], swatch: products[0].swatch },
-  { ...SHOP_CATEGORY_LINKS[1], swatch: products[1].swatch },
-  { ...SHOP_CATEGORY_LINKS[2], swatch: products[2].swatch },
-  { ...SHOP_CATEGORY_LINKS[3], swatch: products[3].swatch },
-  { ...SHOP_CATEGORY_LINKS[4], swatch: products[5].swatch },
-  { label: "All Products", href: "/shop" },
-];
-
-const SHOP_PROMO: MegaMenuPromo = {
-  eyebrow: "New",
-  label: "Shop the Edit",
-  href: "/shop?sort=new",
-  swatch: products[0].swatch,
-};
-
 const ROOM_TILES: MegaMenuTile[] = [
   ...rooms.slice(0, 7).map((r) => ({ label: r.name, href: `/rooms/${r.slug}`, swatch: r.heroSwatch })),
   { label: "All Rooms", href: "/rooms" },
-];
-
-const ROOM_PROMO: MegaMenuPromo = {
-  eyebrow: "Curated",
-  label: "Shop by Room",
-  href: "/rooms",
-  swatch: products[4].swatch,
-};
-
-const NAV_LINKS = [
-  { label: "Shop", href: "/shop", menu: { tiles: SHOP_TILES, promo: SHOP_PROMO } },
-  { label: "Rooms", href: "/rooms", menu: { tiles: ROOM_TILES, promo: ROOM_PROMO } },
-  { label: "Materials", href: "/materials" },
-  { label: "Journal", href: "/journal" },
-  { label: "New Arrivals", href: "/shop?sort=new", badge: { text: "New", tone: "new" as const } },
-  { label: "Sale", href: "/shop?sale=true", badge: { text: "Sale", tone: "sale" as const } },
 ];
 
 const ANNOUNCEMENTS = [
@@ -86,10 +55,44 @@ function NavBadge({ badge }: { badge: { text: string; tone: "new" | "sale" } }) 
   );
 }
 
-export function SiteHeader() {
+export function SiteHeader({
+  categorySwatches = {},
+  roomsPromoSwatch,
+}: {
+  categorySwatches?: Record<string, string>;
+  roomsPromoSwatch?: string;
+}) {
   const { count, openCart } = useCart();
   const pathname = usePathname();
   const isHome = pathname === "/";
+
+  const shopTiles: MegaMenuTile[] = [
+    ...SHOP_CATEGORY_LINKS.map((link) => ({
+      ...link,
+      swatch: categorySwatches[link.label] ?? DEFAULT_SWATCH,
+    })),
+    { label: "All Products", href: "/shop" },
+  ];
+  const shopPromo: MegaMenuPromo = {
+    eyebrow: "New",
+    label: "Shop the Edit",
+    href: "/shop?sort=new",
+    swatch: categorySwatches.Living ?? DEFAULT_SWATCH,
+  };
+  const roomsPromo: MegaMenuPromo = {
+    eyebrow: "Curated",
+    label: "Shop by Room",
+    href: "/rooms",
+    swatch: roomsPromoSwatch ?? DEFAULT_SWATCH,
+  };
+  const navLinks = [
+    { label: "Shop", href: "/shop", menu: { tiles: shopTiles, promo: shopPromo } },
+    { label: "Rooms", href: "/rooms", menu: { tiles: ROOM_TILES, promo: roomsPromo } },
+    { label: "Materials", href: "/materials" },
+    { label: "Journal", href: "/journal" },
+    { label: "New Arrivals", href: "/shop?sort=new", badge: { text: "New", tone: "new" as const } },
+    { label: "Sale", href: "/shop?sale=true", badge: { text: "Sale", tone: "sale" as const } },
+  ];
 
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -208,7 +211,7 @@ export function SiteHeader() {
             className="hidden md:flex items-center gap-9 h-12 border-t border-current/10"
             onMouseLeave={() => setOpenMenu(null)}
           >
-            {NAV_LINKS.map((link) => (
+            {navLinks.map((link) => (
               <div
                 key={link.href}
                 className="relative h-full flex items-center"

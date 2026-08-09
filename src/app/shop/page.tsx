@@ -1,4 +1,4 @@
-import { products, collectionStories } from "@/lib/products";
+import { getProducts, collectionStories } from "@/lib/products";
 import { ShopHero } from "@/components/shop/shop-hero";
 import { CategoryRail } from "@/components/shop/category-rail";
 import { ShopBrowser } from "@/components/shop/shop-browser";
@@ -20,6 +20,7 @@ export default async function ShopPage({
   }>;
 }) {
   const params = await searchParams;
+  const products = await getProducts();
   let list = products;
 
   if (params.category) {
@@ -75,14 +76,15 @@ export default async function ShopPage({
   const heroCopy =
     story?.copy ??
     "Furniture and home goods built from honest materials, made to outlast the trend cycle.";
-  const heroSwatch = list[0]?.swatch ?? products[0].swatch;
+  const DEFAULT_SWATCH = "linear-gradient(135deg, #D9CBB5, #B8A582)";
+  const heroSwatch = list[0]?.swatch ?? products[0]?.swatch ?? DEFAULT_SWATCH;
 
   const relatedCollections = categories
     .filter((c) => c.toLowerCase() !== params.category?.toLowerCase())
     .slice(0, 4)
     .map((category) => ({
       category,
-      swatch: products.find((p) => p.category === category)?.swatch ?? products[0].swatch,
+      swatch: products.find((p) => p.category === category)?.swatch ?? products[0]?.swatch ?? DEFAULT_SWATCH,
     }));
 
   return (
@@ -92,7 +94,7 @@ export default async function ShopPage({
       </div>
 
       <div className="mx-auto max-w-7xl px-6 pt-12">
-        <CategoryRail categories={categories} activeCategory={params.category} />
+        <CategoryRail categories={categories} activeCategory={params.category} products={products} />
       </div>
 
       <div className="mx-auto max-w-7xl px-6 py-16">

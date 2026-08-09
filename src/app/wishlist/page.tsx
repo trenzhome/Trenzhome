@@ -1,28 +1,36 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getProductBySlug } from "@/lib/products";
+import { Product } from "@/types";
 import { readWishlist, toggleWishlisted } from "@/lib/wishlist";
 import { WishlistGrid } from "@/components/product/wishlist-grid";
 import { ProductGridOrEmpty } from "@/components/shop/product-grid-or-empty";
 
+async function lookupProducts(slugs: string[]): Promise<Product[]> {
+  if (slugs.length === 0) return [];
+  const res = await fetch("/api/products/lookup", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ slugs }),
+  });
+  const data = await res.json();
+  return data.products ?? [];
+}
+
 export default function WishlistPage() {
-  const [slugs, setSlugs] = useState<string[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    setSlugs(readWishlist());
-    setHydrated(true);
+    lookupProducts(readWishlist())
+      .then(setProducts)
+      .finally(() => setHydrated(true));
   }, []);
 
   function handleRemove(slug: string) {
     toggleWishlisted(slug);
-    setSlugs(readWishlist());
+    lookupProducts(readWishlist()).then(setProducts);
   }
-
-  const products = slugs
-    .map(getProductBySlug)
-    .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-16">

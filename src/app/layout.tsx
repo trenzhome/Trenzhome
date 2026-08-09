@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-import { SiteHeader } from "@/components/layout/site-header";
+import { SiteHeaderData } from "@/components/layout/site-header-data";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { TrustStrip } from "@/components/layout/trust-strip";
 import { CartProvider } from "@/components/cart/cart-context";
@@ -43,7 +43,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${display.variable} ${body.variable} ${mono.variable}`}>
         <CartProvider>
-          <SiteHeader />
+          <SiteHeaderData />
           <main className="pt-[116px] md:pt-[164px]">{children}</main>
           <TrustStrip />
           <SiteFooter />
