@@ -63,13 +63,12 @@ export async function getProducts(): Promise<Product[]> {
 
 export async function getProductBySlug(slug: string): Promise<Product | undefined> {
   if (!shopifyConfigured) return mockProducts.find((p) => p.slug === slug);
-  try {
-    const product = await getProductByHandle(slug);
-    return product ?? undefined;
-  } catch (err) {
-    console.error(`Shopify getProductByHandle(${slug}) failed, falling back to mock catalog:`, err);
-    return mockProducts.find((p) => p.slug === slug);
-  }
+  // Unlike getProducts(), a failure here must NOT fall back to the mock
+  // catalog: the mock catalog will never contain a real Shopify handle, so
+  // "API errored" would silently render as "product not found" (a false
+  // 404) instead of a proper temporary-error page. Let it throw instead.
+  const product = await getProductByHandle(slug);
+  return product ?? undefined;
 }
 
 export async function getProductsBySlugs(slugs: string[]): Promise<Product[]> {
