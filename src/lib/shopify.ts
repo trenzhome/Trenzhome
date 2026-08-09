@@ -1,6 +1,6 @@
 import type { Product, ProductVariant } from "@/types";
 
-const API_VERSION = "2025-01";
+const API_VERSION = "2026-07";
 const DOMAIN = process.env.SHOPIFY_STORE_DOMAIN;
 const TOKEN = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN;
 
