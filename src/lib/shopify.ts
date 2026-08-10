@@ -20,7 +20,10 @@ async function shopifyFetch<T>(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-Shopify-Storefront-Access-Token": TOKEN,
+      // This is the private (server-side) token, which Shopify authenticates
+      // via a different header than the public/client token — sending it as
+      // X-Shopify-Storefront-Access-Token gets a silent 401 Unauthorized.
+      "Shopify-Storefront-Private-Token": TOKEN,
     },
     body: JSON.stringify({ query, variables }),
     next: { revalidate: 60 },
