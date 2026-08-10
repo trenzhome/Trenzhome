@@ -7,19 +7,33 @@ import { Product } from "@/types";
 import { MaterialSwatch } from "@/components/product/material-swatch";
 import { Reveal } from "./reveal";
 
-// Editorial "shop the look" scene, built the same way as the rest of the
-// site: no photography exists yet, so each piece of furniture is a
+// Editorial "shop the look" scene: each piece of furniture is a
 // MaterialSwatch shape (its real product gradient) arranged into a room
 // silhouette. Every shape is a tagged hotspot linking straight to checkout,
 // same idea as Deck-style visual-storytelling themes ("Shop the Look").
-const SCENE = [
-  { slug: "harlow-linen-sofa", x: 32, y: 66, shape: "sofa" as const },
-  { slug: "isla-boucle-armchair", x: 79, y: 58, shape: "chair" as const },
-  { slug: "moraine-brass-pendant", x: 52, y: 16, shape: "pendant" as const },
+// Roles are resolved to real catalog products by category at render time
+// (rather than hardcoded slugs) so this keeps working as the catalog changes.
+const SCENE_ROLES = [
+  { categories: ["Living"], x: 32, y: 66, shape: "sofa" as const },
+  { categories: ["Dining", "Living"], x: 79, y: 58, shape: "chair" as const },
+  { categories: ["Lighting"], x: 52, y: 16, shape: "pendant" as const },
 ];
 
 export function ShopTheLook({ products }: { products: Product[] }) {
   const [active, setActive] = useState<string | null>(null);
+
+  const used = new Set<string>();
+  const SCENE = SCENE_ROLES.map((role) => {
+    const product = products.find(
+      (p) => role.categories.includes(p.category) && !used.has(p.id)
+    );
+    if (product) used.add(product.id);
+    return { slug: product?.slug, x: role.x, y: role.y, shape: role.shape };
+  }).filter((item): item is { slug: string; x: number; y: number; shape: typeof item.shape } =>
+    Boolean(item.slug)
+  );
+
+  if (SCENE.length === 0) return null;
 
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">

@@ -36,6 +36,7 @@ export default async function RoomPage({
   const curated = products.filter((p) =>
     room.categories.some((c) => c.toLowerCase() === p.category.toLowerCase())
   );
+  const heroImage = curated.find((p) => p.image)?.image;
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-6">
@@ -44,6 +45,7 @@ export default async function RoomPage({
         tagline={room.tagline}
         description={room.description}
         swatch={room.heroSwatch}
+        image={heroImage}
       />
 
       <div className="grid md:grid-cols-2 gap-16 py-20">

@@ -2,13 +2,22 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { MaterialSwatch } from "@/components/product/material-swatch";
 
 const DEFAULT_SWATCH = "linear-gradient(135deg, #D9CBB5, #B8A582)";
 
-export function Hero({ swatch = DEFAULT_SWATCH }: { swatch?: string }) {
+export function Hero({
+  swatch = DEFAULT_SWATCH,
+  image,
+  imageAlt = "",
+}: {
+  swatch?: string;
+  image?: string;
+  imageAlt?: string;
+}) {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -23,9 +32,9 @@ export function Hero({ swatch = DEFAULT_SWATCH }: { swatch?: string }) {
 
   return (
     <section className="relative -mt-[116px] md:-mt-[164px] min-h-[92vh] pt-[116px] md:pt-[164px] bg-ink text-paper overflow-hidden flex items-center">
-      {/* Cinematic background — material-swatch gradients stand in for lifestyle photography/video
-          until real 4K assets are available; this section is built to accept a <video> or
-          Next.js <Image> background directly in its place. */}
+      {/* Dark ambient backdrop behind the copy; the right-hand panel shows the
+          real featured product photo (falls back to a swatch gradient if no
+          product has one yet). */}
       <motion.div
         className="absolute inset-0"
         animate={{ x: offset.x, y: offset.y }}
@@ -38,10 +47,16 @@ export function Hero({ swatch = DEFAULT_SWATCH }: { swatch?: string }) {
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-ink/10" />
       <div className="absolute right-[-8%] top-1/2 -translate-y-1/2 w-[55%] aspect-[3/4] hidden md:block opacity-90">
-        <MaterialSwatch
-          gradient={swatch}
-          className="h-full w-full rounded-3xl shadow-luxury ring-1 ring-paper/10 -rotate-3"
-        />
+        {image ? (
+          <div className="relative h-full w-full rounded-3xl shadow-luxury ring-1 ring-paper/10 -rotate-3 overflow-hidden">
+            <Image src={image} alt={imageAlt} fill sizes="55vw" className="object-cover" priority />
+          </div>
+        ) : (
+          <MaterialSwatch
+            gradient={swatch}
+            className="h-full w-full rounded-3xl shadow-luxury ring-1 ring-paper/10 -rotate-3"
+          />
+        )}
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 w-full">
