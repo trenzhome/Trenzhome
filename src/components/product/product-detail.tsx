@@ -6,6 +6,7 @@ import { Star, Minus, Plus, Truck } from "lucide-react";
 import { Product } from "@/types";
 import { useCart } from "@/components/cart/cart-context";
 import { ShowroomViewer } from "./showroom-viewer";
+import { ProductGallery } from "./product-gallery";
 import { Configurator } from "./configurator";
 import { MaterialExplorer } from "./material-explorer";
 import { ProductActions } from "./product-actions";
@@ -66,12 +67,16 @@ export function ProductDetail({ product }: { product: Product }) {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <ShowroomViewer
-          gradient={product.swatch}
-          tint={variant.tint}
-          hotspots={product.hotspots}
-          onExploreMaterial={product.materialDetail ? () => setMaterialOpen(true) : undefined}
-        />
+        {product.images && product.images.length > 0 ? (
+          <ProductGallery images={product.images} title={product.title} />
+        ) : (
+          <ShowroomViewer
+            gradient={product.swatch}
+            tint={variant.tint}
+            hotspots={product.hotspots}
+            onExploreMaterial={product.materialDetail ? () => setMaterialOpen(true) : undefined}
+          />
+        )}
       </motion.div>
 
       <motion.div
