@@ -26,11 +26,27 @@ export default async function HomePage() {
   ];
 
   const featured = products.slice(0, 4);
-  const heroProduct = products.find((p) => p.image) ?? products[0];
+
+  const heroFeatured = (() => {
+    const withImages = products.filter((p) => p.image);
+    const seenCategories = new Set<string>();
+    const picks = [];
+    for (const p of withImages) {
+      if (picks.length >= 3) break;
+      if (seenCategories.has(p.category)) continue;
+      seenCategories.add(p.category);
+      picks.push(p);
+    }
+    for (const p of withImages) {
+      if (picks.length >= 3) break;
+      if (!picks.includes(p)) picks.push(p);
+    }
+    return picks.map((p) => ({ slug: p.slug, title: p.title, price: p.basePrice, image: p.image }));
+  })();
 
   return (
     <>
-      <Hero swatch={heroProduct?.swatch} image={heroProduct?.image} imageAlt={heroProduct?.title ?? ""} />
+      <Hero swatch={products[0]?.swatch} featured={heroFeatured} />
 
       {/* Featured collections */}
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">

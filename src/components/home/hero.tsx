@@ -9,15 +9,21 @@ import { MaterialSwatch } from "@/components/product/material-swatch";
 
 const DEFAULT_SWATCH = "linear-gradient(135deg, #D9CBB5, #B8A582)";
 
+export interface HeroProduct {
+  slug: string;
+  title: string;
+  price: number;
+  image?: string;
+}
+
 export function Hero({
   swatch = DEFAULT_SWATCH,
-  image,
-  imageAlt = "",
+  featured = [],
 }: {
   swatch?: string;
-  image?: string;
-  imageAlt?: string;
+  featured?: HeroProduct[];
 }) {
+  const [main, side1, side2] = featured;
   const [offset, setOffset] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -46,17 +52,53 @@ export function Hero({
         />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-ink/10" />
-      <div className="absolute right-[-8%] top-1/2 -translate-y-1/2 w-[55%] aspect-[3/4] hidden md:block opacity-90">
-        {image ? (
-          <div className="relative h-full w-full rounded-3xl shadow-luxury ring-1 ring-paper/10 -rotate-3 overflow-hidden">
-            <Image src={image} alt={imageAlt} fill sizes="55vw" className="object-cover" priority />
-          </div>
-        ) : (
-          <MaterialSwatch
-            gradient={swatch}
-            className="h-full w-full rounded-3xl shadow-luxury ring-1 ring-paper/10 -rotate-3"
-          />
-        )}
+      <div className="absolute right-6 lg:right-16 top-1/2 -translate-y-1/2 hidden md:block">
+        <div className="relative w-[220px] lg:w-[280px]">
+          {main?.image ? (
+            <Link
+              href={`/product/${main.slug}`}
+              className="group relative block aspect-[4/5] overflow-hidden rounded-2xl shadow-luxury ring-1 ring-paper/10 -rotate-3 transition-transform duration-500 hover:rotate-0"
+            >
+              <Image
+                src={main.image}
+                alt={main.title}
+                fill
+                sizes="280px"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                priority
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <p className="text-xs font-medium text-paper truncate">{main.title}</p>
+                <p className="text-xs font-mono text-paper/70">${main.price.toLocaleString()}</p>
+              </div>
+            </Link>
+          ) : (
+            <MaterialSwatch
+              gradient={swatch}
+              className="aspect-[4/5] rounded-2xl shadow-luxury ring-1 ring-paper/10 -rotate-3"
+            />
+          )}
+
+          {side1?.image && (
+            <Link
+              href={`/product/${side1.slug}`}
+              aria-label={side1.title}
+              className="group absolute -left-14 bottom-4 h-24 w-24 overflow-hidden rounded-xl shadow-luxury ring-2 ring-ink rotate-6 transition-transform duration-300 hover:rotate-0 hover:scale-105"
+            >
+              <Image src={side1.image} alt={side1.title} fill sizes="96px" className="object-cover" />
+            </Link>
+          )}
+
+          {side2?.image && (
+            <Link
+              href={`/product/${side2.slug}`}
+              aria-label={side2.title}
+              className="group absolute -right-10 -top-8 h-20 w-20 overflow-hidden rounded-xl shadow-luxury ring-2 ring-ink -rotate-6 transition-transform duration-300 hover:rotate-0 hover:scale-105"
+            >
+              <Image src={side2.image} alt={side2.title} fill sizes="80px" className="object-cover" />
+            </Link>
+          )}
+        </div>
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 w-full">
