@@ -35,7 +35,17 @@ async function shopifyFetch<T>(
 
   const json = await res.json();
   if (json.errors?.length) {
-    throw new Error(`Shopify Storefront API error: ${json.errors[0].message}`);
+    // GraphQL allows partial success: a field-level error (e.g. a scope we
+    // don't have, like inventory) nulls out just that field rather than the
+    // whole response. Only treat this as fatal when there's no data at all —
+    // otherwise one optional field shouldn't take down every product page.
+    if (!json.data) {
+      throw new Error(`Shopify Storefront API error: ${json.errors[0].message}`);
+    }
+    console.warn(
+      "Shopify Storefront API returned partial data with errors:",
+      json.errors.map((e: { message: string }) => e.message).join("; ")
+    );
   }
   return json.data as T;
 }
