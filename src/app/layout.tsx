@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { TrustStrip } from "@/components/layout/trust-strip";
 import { CartProvider } from "@/components/cart/cart-context";
 import { ChatWidget } from "@/components/chat/chat-widget";
+import { SignupPopup } from "@/components/marketing/signup-popup";
 
 const display = Fraunces({
   subsets: ["latin"],
@@ -49,6 +50,7 @@ export default function RootLayout({
           <TrustStrip />
           <SiteFooter />
           <ChatWidget />
+          <SignupPopup />
         </CartProvider>
       </body>
     </html>
