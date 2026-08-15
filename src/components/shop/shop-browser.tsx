@@ -43,7 +43,7 @@ export function ShopBrowser({
   const searchParams = useSearchParams();
 
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [columns, setColumns] = useState<number>(3);
+  const [columns, setColumns] = useState<number>(4);
   const [compareMode, setCompareMode] = useState(false);
   const [compareSlugs, setCompareSlugs] = useState<string[]>([]);
   const [comparePanelOpen, setComparePanelOpen] = useState(false);

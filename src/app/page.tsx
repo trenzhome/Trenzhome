@@ -123,8 +123,11 @@ export default async function HomePage() {
         {Object.entries(collectionStories)
           .slice(0, 2)
           .map(([category, story], i) => {
-            const storyProduct =
-              products.find((p) => p.category === category && p.image) ?? products[i * 2] ?? products[0];
+            const categoryProducts = products.filter((p) => p.category === category && p.image);
+            const [storyProduct, accentProduct] = [
+              categoryProducts[0] ?? products[i * 2] ?? products[0],
+              categoryProducts[1],
+            ];
             return (
             <div
               key={story.title}
@@ -133,22 +136,38 @@ export default async function HomePage() {
               }`}
             >
               <Reveal direction={i % 2 === 1 ? "right" : "left"}>
-                {storyProduct?.image ? (
-                  <div className="relative aspect-[4/5] max-w-xs mx-auto md:mx-0 rounded-2xl shadow-soft overflow-hidden">
-                    <Image
-                      src={storyProduct.image}
-                      alt={storyProduct.title}
-                      fill
-                      sizes="(min-width: 768px) 320px, 60vw"
-                      className="object-cover"
+                <div className="relative h-[320px] md:h-[360px] max-w-sm mx-auto md:mx-0">
+                  {storyProduct?.image ? (
+                    <div className="absolute left-0 top-0 h-full w-[68%] rounded-2xl shadow-soft overflow-hidden">
+                      <Image
+                        src={storyProduct.image}
+                        alt={storyProduct.title}
+                        fill
+                        sizes="280px"
+                        className="object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <MaterialSwatch
+                      gradient={storyProduct?.swatch ?? products[0]?.swatch}
+                      className="absolute left-0 top-0 h-full w-[68%] rounded-2xl shadow-soft"
                     />
-                  </div>
-                ) : (
-                  <MaterialSwatch
-                    gradient={storyProduct?.swatch ?? products[0]?.swatch}
-                    className="aspect-[4/5] max-w-xs mx-auto md:mx-0 rounded-2xl shadow-soft"
-                  />
-                )}
+                  )}
+                  {accentProduct?.image && (
+                    <Link
+                      href={`/product/${accentProduct.slug}`}
+                      className="group absolute right-0 bottom-0 h-[58%] w-[42%] rounded-xl shadow-luxury ring-4 ring-paper overflow-hidden"
+                    >
+                      <Image
+                        src={accentProduct.image}
+                        alt={accentProduct.title}
+                        fill
+                        sizes="180px"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </Link>
+                  )}
+                </div>
               </Reveal>
               <Reveal direction={i % 2 === 1 ? "left" : "right"} delay={0.1}>
                 <p className="eyebrow mb-2">Editorial</p>
