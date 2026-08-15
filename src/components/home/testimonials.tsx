@@ -27,7 +27,7 @@ const REVIEWS = [
 
 export function Testimonials() {
   return (
-    <section className="mx-auto max-w-[1800px] px-6 py-[2rem] md:py-[2.5rem]">
+    <section className="mx-auto max-w-[1800px] px-6 py-[1.5rem] md:py-[1.75rem]">
       <Reveal>
         <p className="eyebrow mb-2 text-center">In Their Words</p>
         <h2 className="font-display text-[1.125rem] md:text-[1.375rem] mb-8 text-center">

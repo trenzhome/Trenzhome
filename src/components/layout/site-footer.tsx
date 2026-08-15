@@ -52,7 +52,7 @@ const SOCIALS = [
 export function SiteFooter() {
   return (
     <footer className="bg-ink text-paper mt-12">
-      <div className="mx-auto max-w-[1800px] px-6 py-8 grid grid-cols-2 md:grid-cols-6 gap-6">
+      <div className="mx-auto max-w-[1800px] px-6 py-6 grid grid-cols-2 md:grid-cols-6 gap-6">
         <div className="col-span-2 md:col-span-2">
           <p className="font-display text-xl mb-3">Trenzhome</p>
           <p className="text-sm text-paper/60 max-w-xs leading-relaxed mb-4">
@@ -90,7 +90,7 @@ export function SiteFooter() {
           </div>
         ))}
       </div>
-      <div className="border-t border-paper/10 px-6 py-5">
+      <div className="border-t border-paper/10 px-6 py-4">
         <div className="mx-auto max-w-[1800px] flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[11px] font-mono uppercase tracking-wide text-paper/40">
           <span>Secure checkout</span>
           <span aria-hidden>&middot;</span>
@@ -102,7 +102,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="border-t border-paper/10 px-6 py-6">
+      <div className="border-t border-paper/10 px-6 py-5">
         <div className="mx-auto max-w-[1800px] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-paper/50 font-mono">
           <span>&copy; {new Date().getFullYear()} Trenzhome. All rights reserved.</span>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">

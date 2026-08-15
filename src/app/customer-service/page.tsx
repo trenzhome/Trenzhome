@@ -64,9 +64,9 @@ export default function CustomerServicePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div className="mx-auto max-w-[1800px] px-6 py-6">
+    <div className="mx-auto max-w-[1800px] px-6 py-5">
       <p className="eyebrow mb-3">Help Center</p>
-      <h1 className="font-display text-2xl mb-6">Customer Service</h1>
+      <h1 className="font-display text-xl mb-6">Customer Service</h1>
 
       <nav className="flex flex-wrap gap-3 mb-16">
         {NAV.map((item) => (
@@ -80,7 +80,7 @@ export default function CustomerServicePage() {
         ))}
       </nav>
 
-      <section id="shipping" className="scroll-mt-32 py-6 border-t border-ink/10">
+      <section id="shipping" className="scroll-mt-32 py-5 border-t border-ink/10">
         <div className="flex items-start gap-4 mb-4">
           <Truck size={20} strokeWidth={1.75} className="text-flare mt-1" />
           <h2 className="font-display text-xl">Shipping</h2>
@@ -92,7 +92,7 @@ export default function CustomerServicePage() {
         </div>
       </section>
 
-      <section id="returns" className="scroll-mt-32 py-6 border-t border-ink/10">
+      <section id="returns" className="scroll-mt-32 py-5 border-t border-ink/10">
         <div className="flex items-start gap-4 mb-4">
           <RotateCcw size={20} strokeWidth={1.75} className="text-flare mt-1" />
           <h2 className="font-display text-xl">Returns &amp; Refunds</h2>
@@ -104,7 +104,7 @@ export default function CustomerServicePage() {
         </div>
       </section>
 
-      <section id="warranty" className="scroll-mt-32 py-6 border-t border-ink/10">
+      <section id="warranty" className="scroll-mt-32 py-5 border-t border-ink/10">
         <div className="flex items-start gap-4 mb-4">
           <ShieldCheck size={20} strokeWidth={1.75} className="text-flare mt-1" />
           <h2 className="font-display text-xl">Warranty</h2>
@@ -115,12 +115,12 @@ export default function CustomerServicePage() {
         </div>
       </section>
 
-      <section id="track-order" className="scroll-mt-32 py-6 border-t border-ink/10">
+      <section id="track-order" className="scroll-mt-32 py-5 border-t border-ink/10">
         <h2 className="font-display text-xl mb-6">Track Your Order</h2>
         <TrackOrderForm />
       </section>
 
-      <section id="faq" className="scroll-mt-32 py-6 border-t border-ink/10">
+      <section id="faq" className="scroll-mt-32 py-5 border-t border-ink/10">
         <h2 className="font-display text-xl mb-6">Frequently Asked Questions</h2>
         <div className="max-w-2xl">
           {FAQS.map((faq, i) => {
@@ -129,7 +129,7 @@ export default function CustomerServicePage() {
               <div key={faq.q} className="border-b border-ink/10">
                 <button
                   onClick={() => setOpenFaq(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between py-5 text-left gap-4"
+                  className="w-full flex items-center justify-between py-4 text-left gap-4"
                   aria-expanded={isOpen}
                 >
                   <span className="font-medium">{faq.q}</span>

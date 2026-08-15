@@ -88,7 +88,7 @@ export function Hero({
   }, []);
 
   return (
-    <section className="relative -mt-[116px] md:-mt-[164px] min-h-[42vh] md:min-h-[46vh] pt-[116px] md:pt-[164px] bg-ink text-paper overflow-hidden flex items-center">
+    <section className="relative -mt-[116px] md:-mt-[164px] min-h-[36vh] md:min-h-[40vh] pt-[116px] md:pt-[164px] bg-ink text-paper overflow-hidden flex items-center">
       {/* Dark ambient backdrop */}
       <motion.div
         className="absolute inset-0"
@@ -177,7 +177,7 @@ export function Hero({
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-          className="font-display italic text-xl sm:text-[1.375rem] md:text-[1.625rem] leading-[1.05] mb-3 max-w-md"
+          className="font-display italic text-xl sm:text-[1.1875rem] md:text-[1.375rem] leading-[1.05] mb-3 max-w-md"
         >
           Furniture, considered.
         </motion.h1>

@@ -14,9 +14,9 @@ export default function ProductError({
   }, [error]);
 
   return (
-    <div className="mx-auto max-w-xl px-6 py-10 text-center">
+    <div className="mx-auto max-w-xl px-6 py-6 text-center">
       <p className="eyebrow mb-3">Temporarily Unavailable</p>
-      <h1 className="font-display text-2xl mb-4">We couldn&apos;t load this product</h1>
+      <h1 className="font-display text-xl mb-4">We couldn&apos;t load this product</h1>
       <p className="text-steel mb-8">
         Something went wrong reaching our catalog. This is usually momentary — please try again.
       </p>

@@ -140,7 +140,7 @@ export function ProductTabs({ product }: { product: Product }) {
           <div key={section.id} className="border-b border-ink/10">
             <button
               onClick={() => setOpen(isOpen ? "" : section.id)}
-              className="w-full flex items-center justify-between py-5 text-left"
+              className="w-full flex items-center justify-between py-4 text-left"
               aria-expanded={isOpen}
             >
               <span className="font-display text-lg">{section.label}</span>

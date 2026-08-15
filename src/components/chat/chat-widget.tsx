@@ -128,7 +128,7 @@ export function ChatWidget() {
               </button>
             </div>
 
-            <div ref={scrollRef} className="flex-1 space-y-4 overflow-y-auto px-4 py-5">
+            <div ref={scrollRef} className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
               {messages.map((m, i) => (
                 <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div

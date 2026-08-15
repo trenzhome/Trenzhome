@@ -35,7 +35,7 @@ export function CartDrawer() {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto px-6 py-6 space-y-6">
+        <div className="flex-1 overflow-y-auto px-6 py-5 space-y-6">
           {lines.length === 0 && (
             <p className="text-steel text-sm">
               Your bag is empty. Nothing chosen yet is not the same as nothing
@@ -93,7 +93,7 @@ export function CartDrawer() {
         </div>
 
         {lines.length > 0 && (
-          <div className="border-t border-ink/10 px-6 py-6 space-y-4">
+          <div className="border-t border-ink/10 px-6 py-5 space-y-4">
             <div className="flex justify-between font-mono text-sm font-bold">
               <span>Subtotal</span>
               <span>${subtotal.toLocaleString()}</span>

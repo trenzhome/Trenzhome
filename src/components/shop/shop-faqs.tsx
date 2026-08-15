@@ -15,7 +15,7 @@ export function ShopFaqs() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="bg-fog py-8">
+    <section className="bg-fog py-6">
       <div className="mx-auto max-w-[1800px] px-6">
         <p className="eyebrow mb-3">Questions</p>
         <h2 className="font-display text-[1.125rem] md:text-[1.375rem] mb-10 max-w-lg">Frequently Asked</h2>
@@ -26,7 +26,7 @@ export function ShopFaqs() {
               <div key={faq.q} className="border-b border-ink/10">
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between py-5 text-left gap-4"
+                  className="w-full flex items-center justify-between py-4 text-left gap-4"
                   aria-expanded={isOpen}
                 >
                   <span className="font-medium">{faq.q}</span>

@@ -41,14 +41,14 @@ export default async function MaterialPage({
     : [];
 
   return (
-    <div className="mx-auto max-w-[1800px] px-6 py-6">
+    <div className="mx-auto max-w-[1800px] px-6 py-5">
       <MaterialHero name={material.name} tagline={material.tagline} swatch={material.swatch} />
 
       <MaterialFacts material={material} />
 
       <section className="pb-20">
         <p className="eyebrow mb-3">Made With {material.name}</p>
-        <h2 className="font-display text-2xl mb-8">Product Recommendations</h2>
+        <h2 className="font-display text-xl mb-8">Product Recommendations</h2>
         <ProductGridOrEmpty
           products={recommended}
           emptyMessage={`We don't have a ${material.name.toLowerCase()} product in stock yet — check back soon.`}

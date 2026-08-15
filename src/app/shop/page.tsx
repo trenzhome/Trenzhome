@@ -109,7 +109,7 @@ export default async function ShopPage({
       </div>
 
       <div className="mx-auto max-w-[1800px] px-6 pt-4">
-        <div className="bg-fog px-6 py-5 text-center">
+        <div className="bg-fog px-6 py-4 text-center">
           <p className="eyebrow mb-1.5">Trenzhome Perks</p>
           <p className="font-display text-lg md:text-xl">
             Complimentary shipping over $150 &mdash; 30-day trial on every order
@@ -121,7 +121,7 @@ export default async function ShopPage({
         <CategoryRail categories={categories} activeCategory={params.category} />
       </div>
 
-      <div className="mx-auto max-w-[1800px] px-6 py-6">
+      <div className="mx-auto max-w-[1800px] px-6 py-5">
         <ShopBrowser
           products={list}
           categories={categories}

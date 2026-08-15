@@ -33,9 +33,9 @@ export default function WishlistPage() {
   }
 
   return (
-    <div className="mx-auto max-w-[1800px] px-6 py-6">
+    <div className="mx-auto max-w-[1800px] px-6 py-5">
       <p className="eyebrow mb-3">Saved</p>
-      <h1 className="font-display text-2xl mb-4">Your Wishlist</h1>
+      <h1 className="font-display text-xl mb-4">Your Wishlist</h1>
       <p className="text-steel max-w-lg mb-14">
         Pieces you&rsquo;ve saved for later. Saved on this device only — sign in to sync across devices is coming soon.
       </p>

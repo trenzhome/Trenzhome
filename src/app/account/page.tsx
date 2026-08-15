@@ -16,11 +16,11 @@ export default function AccountPage() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <div className="mx-auto max-w-[1800px] px-6 py-6">
+    <div className="mx-auto max-w-[1800px] px-6 py-5">
       <div className="grid md:grid-cols-2 gap-16 items-start">
         <div>
           <p className="eyebrow mb-3">Account</p>
-          <h1 className="font-display text-2xl mb-6">Sign In</h1>
+          <h1 className="font-display text-xl mb-6">Sign In</h1>
           <p className="text-steel max-w-md mb-10 leading-relaxed">
             Account sign-in isn&rsquo;t live yet — we&rsquo;re building it out. In the
             meantime, your <a href="/wishlist" className="underline hover:text-flare">wishlist</a> is

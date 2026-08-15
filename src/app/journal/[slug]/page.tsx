@@ -37,7 +37,7 @@ export default async function JournalPostPage({
   });
 
   return (
-    <article className="mx-auto max-w-3xl px-6 py-6">
+    <article className="mx-auto max-w-3xl px-6 py-5">
       <p className="eyebrow mb-3">{post.category}</p>
       <h1 className="font-display text-[1.375rem] md:text-[1.625rem] mb-6 leading-tight">{post.title}</h1>
       <p className="text-sm text-steel font-mono mb-10">{date} &middot; {post.readTime}</p>

@@ -39,7 +39,7 @@ export default async function RoomPage({
   const heroImage = curated.find((p) => p.image)?.image;
 
   return (
-    <div className="mx-auto max-w-[1800px] px-6 py-6">
+    <div className="mx-auto max-w-[1800px] px-6 py-5">
       <RoomHero
         name={room.name}
         tagline={room.tagline}
@@ -48,7 +48,7 @@ export default async function RoomPage({
         image={heroImage}
       />
 
-      <div className="grid md:grid-cols-2 gap-16 py-8">
+      <div className="grid md:grid-cols-2 gap-16 py-6">
         <ColorPalette palette={room.palette} />
         <StyleGuide tips={room.styleTips} />
       </div>

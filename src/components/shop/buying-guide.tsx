@@ -27,7 +27,7 @@ export function BuyingGuide() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="mx-auto max-w-[1800px] px-6 py-8">
+    <section className="mx-auto max-w-[1800px] px-6 py-6">
       <p className="eyebrow mb-3">Before You Buy</p>
       <h2 className="font-display text-[1.125rem] md:text-[1.375rem] mb-10 max-w-lg">A Short Buying Guide</h2>
       <div className="max-w-2xl">
@@ -37,7 +37,7 @@ export function BuyingGuide() {
             <div key={step.title} className="border-b border-ink/10">
               <button
                 onClick={() => setOpen(isOpen ? null : i)}
-                className="w-full flex items-center justify-between py-5 text-left gap-4"
+                className="w-full flex items-center justify-between py-4 text-left gap-4"
                 aria-expanded={isOpen}
               >
                 <span className="font-display text-lg">{step.title}</span>

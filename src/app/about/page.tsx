@@ -21,9 +21,9 @@ export default async function AboutPage() {
   const products = await getProducts();
   const heroSwatch = products[0]?.swatch ?? "linear-gradient(135deg, #D9CBB5, #B8A582)";
   return (
-    <div className="mx-auto max-w-[1800px] px-6 py-6">
+    <div className="mx-auto max-w-[1800px] px-6 py-5">
       <p className="eyebrow mb-3">About</p>
-      <h1 className="font-display text-2xl mb-6">Furnish Different</h1>
+      <h1 className="font-display text-xl mb-6">Furnish Different</h1>
 
       <nav className="flex flex-wrap gap-3 mb-16">
         {NAV.map((item) => (
@@ -37,7 +37,7 @@ export default async function AboutPage() {
         ))}
       </nav>
 
-      <section id="story" className="scroll-mt-32 grid md:grid-cols-2 gap-14 items-center py-6 border-t border-ink/10">
+      <section id="story" className="scroll-mt-32 grid md:grid-cols-2 gap-14 items-center py-5 border-t border-ink/10">
         <Reveal direction="left">
           <MaterialSwatch gradient={heroSwatch} className="aspect-[4/5] rounded-2xl shadow-soft" />
         </Reveal>
@@ -58,7 +58,7 @@ export default async function AboutPage() {
         </Reveal>
       </section>
 
-      <section id="mission" className="scroll-mt-32 py-6 border-t border-ink/10">
+      <section id="mission" className="scroll-mt-32 py-5 border-t border-ink/10">
         <div className="flex items-start gap-4 mb-6">
           <Compass size={22} strokeWidth={1.75} className="text-flare mt-1" />
           <h2 className="font-display text-xl">Our Mission</h2>
@@ -70,7 +70,7 @@ export default async function AboutPage() {
         </p>
       </section>
 
-      <section id="craftsmanship" className="scroll-mt-32 py-6 border-t border-ink/10">
+      <section id="craftsmanship" className="scroll-mt-32 py-5 border-t border-ink/10">
         <div className="flex items-start gap-4 mb-6">
           <Hammer size={22} strokeWidth={1.75} className="text-flare mt-1" />
           <h2 className="font-display text-xl">Craftsmanship</h2>
@@ -89,7 +89,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section id="sustainability" className="scroll-mt-32 py-6 border-t border-ink/10">
+      <section id="sustainability" className="scroll-mt-32 py-5 border-t border-ink/10">
         <div className="flex items-start gap-4 mb-6">
           <Leaf size={22} strokeWidth={1.75} className="text-flare mt-1" />
           <h2 className="font-display text-xl">Sustainability</h2>
@@ -110,7 +110,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="py-6 border-t border-ink/10">
+      <section className="py-5 border-t border-ink/10">
         <div className="flex items-start gap-4 mb-4">
           <Heart size={22} strokeWidth={1.75} className="text-flare mt-1" />
           <h2 className="font-display text-xl">Work With Us</h2>

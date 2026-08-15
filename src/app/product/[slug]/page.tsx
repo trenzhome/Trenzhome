@@ -35,7 +35,7 @@ export default async function ProductPage({
   const story = collectionStories[product.category];
 
   return (
-    <div className="mx-auto max-w-[1800px] px-6 py-8">
+    <div className="mx-auto max-w-[1800px] px-6 py-6">
       <ProductDetail product={product} />
 
       <ProductTabs product={product} />
@@ -47,7 +47,7 @@ export default async function ProductPage({
       {related.length > 0 && (
         <section className="mt-24">
           <p className="eyebrow mb-3">Similar Products</p>
-          <h2 className="font-display text-2xl mb-8">You May Also Like</h2>
+          <h2 className="font-display text-xl mb-8">You May Also Like</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
             {related.map((p) => (
               <ProductCard key={p.id} product={p} />

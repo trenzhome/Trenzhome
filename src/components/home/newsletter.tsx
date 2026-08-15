@@ -9,7 +9,7 @@ export function Newsletter() {
   return (
     <section className="mx-auto max-w-[1800px] px-6 pb-12 md:pb-16">
       <Reveal>
-        <div className="relative overflow-hidden rounded-2xl bg-ink px-6 py-[1.5rem] md:py-[2rem] text-center">
+        <div className="relative overflow-hidden rounded-2xl bg-ink px-6 py-[1.25rem] md:py-[1.5rem] text-center">
           <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-flare/20 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-sand/10 blur-3xl" />
           <div className="relative z-10 mx-auto max-w-xl">

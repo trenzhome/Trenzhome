@@ -85,7 +85,7 @@ export function ProductDetail({ product }: { product: Product }) {
         transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
       >
         <p className="eyebrow mb-3">{product.category}</p>
-        <h1 className="font-display text-2xl mb-3">{product.title}</h1>
+        <h1 className="font-display text-xl mb-3">{product.title}</h1>
 
         <div className="flex items-center justify-between mb-6">
           {product.rating != null && product.reviewCount != null ? (

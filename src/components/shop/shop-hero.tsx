@@ -16,7 +16,7 @@ export function ShopHero({
   const [main, side1, side2] = collage;
 
   return (
-    <section className="relative min-h-[24vh] md:min-h-[26vh] bg-ink text-paper overflow-hidden rounded-2xl flex items-center">
+    <section className="relative min-h-[20vh] md:min-h-[22vh] bg-ink text-paper overflow-hidden rounded-2xl flex items-center">
       <MaterialSwatch
         gradient="linear-gradient(135deg, #2B2823 0%, #161512 55%, #0D0C0A 100%)"
         className="absolute -inset-10 h-[calc(100%+80px)] w-[calc(100%+80px)]"
@@ -58,10 +58,10 @@ export function ShopHero({
         )}
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1800px] px-6 py-5 w-full">
+      <div className="relative z-10 mx-auto max-w-[1800px] px-6 py-4 w-full">
         <Reveal>
           <p className="eyebrow text-paper/60 mb-1.5">Shop</p>
-          <h1 className="font-display text-xl md:text-2xl mb-2 max-w-2xl">{title}</h1>
+          <h1 className="font-display text-xl md:text-xl mb-2 max-w-2xl">{title}</h1>
           <p className="text-paper/70 text-xs max-w-md">{copy}</p>
         </Reveal>
       </div>

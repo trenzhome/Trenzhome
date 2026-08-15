@@ -36,7 +36,7 @@ export function ShopTheLook({ products }: { products: Product[] }) {
   if (SCENE.length === 0) return null;
 
   return (
-    <section className="mx-auto max-w-[1800px] px-6 py-[2rem] md:py-[2.5rem]">
+    <section className="mx-auto max-w-[1800px] px-6 py-[1.5rem] md:py-[1.75rem]">
       <Reveal>
         <div className="flex items-end justify-between mb-8">
           <div>

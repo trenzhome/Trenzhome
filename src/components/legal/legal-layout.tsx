@@ -11,12 +11,12 @@ export function LegalLayout({
   children: ReactNode;
 }) {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-6">
+    <div className="mx-auto max-w-3xl px-6 py-5">
       <p className="eyebrow mb-3">Legal</p>
-      <h1 className="font-display text-[1.375rem] md:text-[1.625rem] mb-3">{title}</h1>
+      <h1 className="font-display text-[1.1875rem] md:text-[1.375rem] mb-3">{title}</h1>
       <p className="text-sm text-steel font-mono mb-10">Last updated {lastUpdated}</p>
 
-      <div className="flex gap-3 rounded-2xl bg-fog px-6 py-5 mb-12">
+      <div className="flex gap-3 rounded-2xl bg-fog px-6 py-4 mb-12">
         <AlertTriangle size={18} strokeWidth={1.75} className="text-flare shrink-0 mt-0.5" />
         <p className="text-sm text-ink/70 leading-relaxed">
           This page is a working draft describing our actual current practices, provided as a
