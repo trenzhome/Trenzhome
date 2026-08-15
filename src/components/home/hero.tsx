@@ -19,7 +19,7 @@ export interface HeroProduct {
   image?: string;
 }
 
-function FloatingCard({
+export function FloatingCard({
   product,
   className,
   imgSize,

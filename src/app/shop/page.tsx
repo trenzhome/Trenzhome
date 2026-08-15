@@ -80,9 +80,8 @@ export default async function ShopPage({
   const DEFAULT_SWATCH = "linear-gradient(135deg, #D9CBB5, #B8A582)";
   const heroSwatch = list[0]?.swatch ?? products[0]?.swatch ?? DEFAULT_SWATCH;
   const heroWithImages = list.filter((p) => p.image);
-  const heroImage = heroWithImages[0]?.image ?? products.find((p) => p.image)?.image;
   const heroCollage = heroWithImages
-    .slice(1, 3)
+    .slice(0, 3)
     .map((p) => ({ slug: p.slug, title: p.title, price: p.basePrice, image: p.image! }));
 
   const relatedCollections = categories
@@ -106,13 +105,7 @@ export default async function ShopPage({
       </div>
 
       <div className="mx-auto max-w-[1800px] px-6 pt-4">
-        <ShopHero
-          title={heroTitle}
-          copy={heroCopy}
-          swatch={heroSwatch}
-          image={heroImage}
-          collage={heroCollage}
-        />
+        <ShopHero title={heroTitle} copy={heroCopy} swatch={heroSwatch} collage={heroCollage} />
       </div>
 
       <div className="mx-auto max-w-[1800px] px-6 pt-8">
