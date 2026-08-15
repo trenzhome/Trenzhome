@@ -49,10 +49,10 @@ export default async function HomePage() {
       <Hero swatch={products[0]?.swatch} featured={heroFeatured} />
 
       {/* Featured collections */}
-      <section className="mx-auto max-w-[1800px] px-6 py-12 md:py-16">
+      <section className="mx-auto max-w-[1800px] px-6 py-[2rem] md:py-[2.5rem]">
         <Reveal>
           <p className="eyebrow mb-2">Shop by Room</p>
-          <h2 className="font-display text-2xl md:text-3xl mb-8 max-w-lg">
+          <h2 className="font-display text-[1.125rem] md:text-[1.375rem] mb-8 max-w-lg">
             Every room, one point of view
           </h2>
         </Reveal>
@@ -93,13 +93,13 @@ export default async function HomePage() {
       <ShopTheLook products={products} />
 
       {/* Featured products */}
-      <section className="bg-fog py-12 md:py-16">
+      <section className="bg-fog py-[2rem] md:py-[2.5rem]">
         <div className="mx-auto max-w-[1800px] px-6">
           <Reveal>
             <div className="flex items-end justify-between mb-8">
               <div>
                 <p className="eyebrow mb-2">Curated</p>
-                <h2 className="font-display text-2xl md:text-3xl">New This Season</h2>
+                <h2 className="font-display text-[1.125rem] md:text-[1.375rem]">New This Season</h2>
               </div>
               <Link href="/shop" className="btn-outline hidden sm:inline-flex">
                 View all
@@ -117,7 +117,7 @@ export default async function HomePage() {
       </section>
 
       {/* Editorial / lifestyle sections */}
-      <section className="mx-auto max-w-[1800px] px-6 py-12 md:py-16 space-y-12 md:space-y-16">
+      <section className="mx-auto max-w-[1800px] px-6 py-[2rem] md:py-[2.5rem] space-y-12 md:space-y-16">
         {Object.entries(collectionStories)
           .slice(0, 2)
           .map(([category, story], i) => {
@@ -150,7 +150,7 @@ export default async function HomePage() {
               </Reveal>
               <Reveal direction={i % 2 === 1 ? "left" : "right"} delay={0.1}>
                 <p className="eyebrow mb-2">Editorial</p>
-                <h3 className="font-display text-2xl md:text-3xl mb-3">{story.title}</h3>
+                <h3 className="font-display text-[1.125rem] md:text-[1.375rem] mb-3">{story.title}</h3>
                 <p className="text-steel text-sm leading-relaxed max-w-md mb-5">{story.copy}</p>
                 <Link href="/shop" className="btn-flare">
                   Explore the Collection

@@ -52,9 +52,9 @@ const SOCIALS = [
 export function SiteFooter() {
   return (
     <footer className="bg-ink text-paper mt-12">
-      <div className="mx-auto max-w-[1800px] px-6 py-12 grid grid-cols-2 md:grid-cols-6 gap-6">
+      <div className="mx-auto max-w-[1800px] px-6 py-8 grid grid-cols-2 md:grid-cols-6 gap-6">
         <div className="col-span-2 md:col-span-2">
-          <p className="font-display text-2xl mb-3">Trenzhome</p>
+          <p className="font-display text-xl mb-3">Trenzhome</p>
           <p className="text-sm text-paper/60 max-w-xs leading-relaxed mb-4">
             Furniture and home goods built from honest materials, made to
             outlast the trend cycle.

@@ -26,7 +26,7 @@ export function RoomHero({
       <div className="relative z-10 px-8 md:px-14 pb-14 w-full">
         <Reveal>
           <p className="eyebrow text-paper/60 mb-3">{tagline}</p>
-          <h1 className="font-display text-3xl md:text-5xl mb-4 max-w-2xl">{name}</h1>
+          <h1 className="font-display text-[1.375rem] md:text-[2rem] mb-4 max-w-2xl">{name}</h1>
           <p className="text-paper/70 max-w-lg leading-relaxed">{description}</p>
         </Reveal>
       </div>

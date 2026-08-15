@@ -21,9 +21,9 @@ export default async function JournalPage({
     : journalPosts;
 
   return (
-    <div className="mx-auto max-w-[1800px] px-6 py-10">
+    <div className="mx-auto max-w-[1800px] px-6 py-6">
       <p className="eyebrow mb-3">Journal</p>
-      <h1 className="font-display text-3xl mb-4">Notes on Living Well</h1>
+      <h1 className="font-display text-2xl mb-4">Notes on Living Well</h1>
       <p className="text-steel max-w-lg mb-10">
         Buying guides, care advice, and the occasional opinion on why we build things the way we do.
       </p>
@@ -53,7 +53,7 @@ export default async function JournalPage({
       </div>
 
       {posts.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-ink/15 px-8 py-8 text-center">
+        <div className="rounded-2xl border border-dashed border-ink/15 px-8 py-6 text-center">
           <p className="text-steel mb-4">No articles in this category yet — check back soon.</p>
           <Link href="/journal" className="btn-outline">
             View All Articles

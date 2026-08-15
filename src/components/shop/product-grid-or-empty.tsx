@@ -11,7 +11,7 @@ export function ProductGridOrEmpty({
 }) {
   if (products.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-ink/15 px-8 py-12 text-center">
+      <div className="rounded-2xl border border-dashed border-ink/15 px-8 py-8 text-center">
         <p className="text-steel mb-4">{emptyMessage}</p>
         <Link href="/shop" className="btn-outline">
           Browse All Products

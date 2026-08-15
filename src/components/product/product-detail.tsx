@@ -85,7 +85,7 @@ export function ProductDetail({ product }: { product: Product }) {
         transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
       >
         <p className="eyebrow mb-3">{product.category}</p>
-        <h1 className="font-display text-5xl mb-3">{product.title}</h1>
+        <h1 className="font-display text-2xl mb-3">{product.title}</h1>
 
         <div className="flex items-center justify-between mb-6">
           {product.rating != null && product.reviewCount != null ? (
@@ -110,7 +110,7 @@ export function ProductDetail({ product }: { product: Product }) {
           <ProductActions slug={product.slug} title={product.title} />
         </div>
 
-        <p className="font-mono text-2xl font-bold mb-1">
+        <p className="font-mono text-xl font-bold mb-1">
           ${variant.price.toLocaleString()}
         </p>
         <p className="text-sm text-steel mb-8">{product.material}</p>

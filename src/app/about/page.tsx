@@ -21,9 +21,9 @@ export default async function AboutPage() {
   const products = await getProducts();
   const heroSwatch = products[0]?.swatch ?? "linear-gradient(135deg, #D9CBB5, #B8A582)";
   return (
-    <div className="mx-auto max-w-[1800px] px-6 py-10">
+    <div className="mx-auto max-w-[1800px] px-6 py-6">
       <p className="eyebrow mb-3">About</p>
-      <h1 className="font-display text-3xl mb-6">Furnish Different</h1>
+      <h1 className="font-display text-2xl mb-6">Furnish Different</h1>
 
       <nav className="flex flex-wrap gap-3 mb-16">
         {NAV.map((item) => (
@@ -37,13 +37,13 @@ export default async function AboutPage() {
         ))}
       </nav>
 
-      <section id="story" className="scroll-mt-32 grid md:grid-cols-2 gap-14 items-center py-10 border-t border-ink/10">
+      <section id="story" className="scroll-mt-32 grid md:grid-cols-2 gap-14 items-center py-6 border-t border-ink/10">
         <Reveal direction="left">
           <MaterialSwatch gradient={heroSwatch} className="aspect-[4/5] rounded-2xl shadow-soft" />
         </Reveal>
         <Reveal direction="right" delay={0.1}>
           <p className="eyebrow mb-3">Our Story</p>
-          <h2 className="font-display text-2xl mb-5">Started with one frustration</h2>
+          <h2 className="font-display text-xl mb-5">Started with one frustration</h2>
           <p className="text-ink/80 leading-relaxed mb-4">
             We got tired of furniture that looked good in a photo and fell apart in a year — pieces
             built to be replaced rather than lived with. Trenzhome started as a bet that people would
@@ -58,10 +58,10 @@ export default async function AboutPage() {
         </Reveal>
       </section>
 
-      <section id="mission" className="scroll-mt-32 py-10 border-t border-ink/10">
+      <section id="mission" className="scroll-mt-32 py-6 border-t border-ink/10">
         <div className="flex items-start gap-4 mb-6">
           <Compass size={22} strokeWidth={1.75} className="text-flare mt-1" />
-          <h2 className="font-display text-2xl">Our Mission</h2>
+          <h2 className="font-display text-xl">Our Mission</h2>
         </div>
         <p className="text-ink/80 leading-relaxed max-w-2xl pl-9">
           To make furniture and home goods that outlast the trend cycle — building a slower, smaller
@@ -70,10 +70,10 @@ export default async function AboutPage() {
         </p>
       </section>
 
-      <section id="craftsmanship" className="scroll-mt-32 py-10 border-t border-ink/10">
+      <section id="craftsmanship" className="scroll-mt-32 py-6 border-t border-ink/10">
         <div className="flex items-start gap-4 mb-6">
           <Hammer size={22} strokeWidth={1.75} className="text-flare mt-1" />
-          <h2 className="font-display text-2xl">Craftsmanship</h2>
+          <h2 className="font-display text-xl">Craftsmanship</h2>
         </div>
         <div className="max-w-2xl pl-9 space-y-4 text-ink/80 leading-relaxed">
           <p>
@@ -89,10 +89,10 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section id="sustainability" className="scroll-mt-32 py-10 border-t border-ink/10">
+      <section id="sustainability" className="scroll-mt-32 py-6 border-t border-ink/10">
         <div className="flex items-start gap-4 mb-6">
           <Leaf size={22} strokeWidth={1.75} className="text-flare mt-1" />
-          <h2 className="font-display text-2xl">Sustainability</h2>
+          <h2 className="font-display text-xl">Sustainability</h2>
         </div>
         <div className="max-w-2xl pl-9 space-y-4 text-ink/80 leading-relaxed">
           <p>
@@ -110,10 +110,10 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="py-10 border-t border-ink/10">
+      <section className="py-6 border-t border-ink/10">
         <div className="flex items-start gap-4 mb-4">
           <Heart size={22} strokeWidth={1.75} className="text-flare mt-1" />
-          <h2 className="font-display text-2xl">Work With Us</h2>
+          <h2 className="font-display text-xl">Work With Us</h2>
         </div>
         <div className="pl-9 flex flex-wrap gap-4">
           <Link href="/trade" className="btn-outline">Trade &amp; Wholesale</Link>

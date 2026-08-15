@@ -37,10 +37,10 @@
     @apply font-mono text-[11px] uppercase tracking-widest2 text-steel;
   }
   .btn-flare {
-    @apply inline-flex items-center justify-center rounded-full bg-ink text-paper px-6 py-3 text-xs font-semibold tracking-wide transition-all duration-300 hover:bg-flare hover:shadow-luxury;
+    @apply inline-flex items-center justify-center rounded-full bg-ink text-paper px-5 py-2.5 text-[11px] font-semibold tracking-wide transition-all duration-300 hover:bg-flare hover:shadow-luxury;
   }
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-full border border-ink/15 bg-transparent px-6 py-3 text-xs font-semibold tracking-wide text-ink transition-all duration-300 hover:border-ink hover:bg-ink hover:text-paper;
+    @apply inline-flex items-center justify-center rounded-full border border-ink/15 bg-transparent px-5 py-2.5 text-[11px] font-semibold tracking-wide text-ink transition-all duration-300 hover:border-ink hover:bg-ink hover:text-paper;
   }
   .glass-panel {
     @apply bg-paper/70 backdrop-blur-glass border border-white/40 shadow-glass;

@@ -10,7 +10,7 @@ export function MaterialFacts({ material }: { material: Material }) {
   ];
 
   return (
-    <div className="grid md:grid-cols-2 gap-16 py-10">
+    <div className="grid md:grid-cols-2 gap-16 py-6">
       <Reveal direction="left">
         <p className="eyebrow mb-6">Benefits</p>
         <ul className="space-y-4">

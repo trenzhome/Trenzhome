@@ -48,7 +48,7 @@ export default async function RoomPage({
         image={heroImage}
       />
 
-      <div className="grid md:grid-cols-2 gap-16 py-12">
+      <div className="grid md:grid-cols-2 gap-16 py-8">
         <ColorPalette palette={room.palette} />
         <StyleGuide tips={room.styleTips} />
       </div>
@@ -57,7 +57,7 @@ export default async function RoomPage({
         <div className="flex items-end justify-between mb-8">
           <div>
             <p className="eyebrow mb-3">Curated for This Room</p>
-            <h2 className="font-display text-2xl">Shop the {room.name}</h2>
+            <h2 className="font-display text-xl">Shop the {room.name}</h2>
           </div>
         </div>
         <ProductGridOrEmpty

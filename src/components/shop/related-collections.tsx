@@ -10,9 +10,9 @@ export function RelatedCollections({
   if (collections.length === 0) return null;
 
   return (
-    <section className="mx-auto max-w-[1800px] px-6 py-12">
+    <section className="mx-auto max-w-[1800px] px-6 py-8">
       <p className="eyebrow mb-3">Explore More</p>
-      <h2 className="font-display text-2xl md:text-3xl mb-10">Related Collections</h2>
+      <h2 className="font-display text-[1.125rem] md:text-[1.375rem] mb-10">Related Collections</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {collections.map((c, i) => (
           <Reveal key={c.category} delay={i * 0.06}>

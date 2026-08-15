@@ -222,7 +222,7 @@ export function ShopBrowser({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-8">
-              <h2 className="font-display text-2xl">Compare</h2>
+              <h2 className="font-display text-xl">Compare</h2>
               <button
                 type="button"
                 aria-label="Close compare panel"
