@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getProducts, collectionStories } from "@/lib/products";
 import { ShopHero } from "@/components/shop/shop-hero";
 import { CategoryRail } from "@/components/shop/category-rail";
@@ -89,12 +90,31 @@ export default async function ShopPage({
 
   return (
     <>
-      <div className="mx-auto max-w-7xl px-6 pt-6">
+      <div className="mx-auto max-w-7xl px-6 pt-6 text-xs text-steel">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2">
+          <Link href="/" className="hover:text-flare transition-colors">
+            Home
+          </Link>
+          <span>/</span>
+          <span className="text-ink">{heroTitle}</span>
+        </nav>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 pt-4">
         <ShopHero title={heroTitle} copy={heroCopy} swatch={heroSwatch} />
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 pt-12">
-        <CategoryRail categories={categories} activeCategory={params.category} products={products} />
+      <div className="mx-auto max-w-7xl px-6 pt-8">
+        <div className="bg-fog px-8 py-8 text-center">
+          <p className="eyebrow mb-2">Trenzhome Perks</p>
+          <p className="font-display text-2xl md:text-3xl">
+            Complimentary shipping over $150 &mdash; 30-day trial on every order
+          </p>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 pt-8">
+        <CategoryRail categories={categories} activeCategory={params.category} />
       </div>
 
       <div className="mx-auto max-w-7xl px-6 py-16">

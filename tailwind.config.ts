@@ -23,6 +23,7 @@ const config: Config = {
         "steel-light": "#DED6C2",
         flare: "#A9835A",
         brass: "#A9835A",
+        clearance: "#B3452B",
         // legacy aliases so existing linen/stone classes keep working during the redesign
         linen: "#FBF9F5",
         stone: "#847D6E",

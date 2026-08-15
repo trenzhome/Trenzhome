@@ -88,33 +88,22 @@ export function ShopBrowser({
       </div>
 
       <div className="flex-1 min-w-0">
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-ink/10">
-          <div className="flex items-center gap-5">
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-8 pb-4 border-b border-ink/10">
+          <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={() => setFiltersOpen((v) => !v)}
-              className="md:hidden flex items-center gap-2 text-sm font-medium hover:text-flare transition-colors"
+              className="md:hidden flex items-center gap-2 border border-ink/20 px-4 py-2.5 text-xs font-bold uppercase tracking-wide hover:border-ink transition-colors"
             >
-              <SlidersHorizontal size={15} strokeWidth={1.75} />
-              Show Filters
+              <SlidersHorizontal size={14} strokeWidth={1.75} />
+              Filters
             </button>
             <p className="text-sm text-steel">
-              {products.length} {products.length === 1 ? "product" : "products"}
+              Products ({products.length})
             </p>
-            <select
-              value={activeSort}
-              onChange={(e) => updateSort(e.target.value)}
-              className="text-sm font-medium bg-transparent focus:outline-none hover:text-flare transition-colors cursor-pointer"
-            >
-              {SORT_OPTIONS.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
           </div>
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={() => {
@@ -125,15 +114,15 @@ export function ShopBrowser({
                 }
               }}
               aria-pressed={compareMode}
-              className={`flex items-center gap-2 text-sm font-medium transition-colors ${
+              className={`hidden sm:flex items-center gap-2 text-xs font-bold uppercase tracking-wide transition-colors ${
                 compareMode ? "text-flare" : "hover:text-flare"
               }`}
             >
-              <GitCompare size={15} strokeWidth={1.75} />
-              {compareMode ? "Exit Compare" : "Compare Products"}
+              <GitCompare size={14} strokeWidth={1.75} />
+              {compareMode ? "Exit Compare" : "Compare"}
             </button>
 
-            <div className="hidden sm:flex items-center gap-1.5 text-steel">
+            <div className="hidden sm:flex items-center gap-1 border border-ink/20 px-2 py-1.5 text-steel">
               <Columns3 size={14} strokeWidth={1.75} className="mr-1" />
               {COLUMN_OPTIONS.map((n) => (
                 <button
@@ -142,13 +131,30 @@ export function ShopBrowser({
                   aria-label={`Show ${n} columns`}
                   aria-pressed={columns === n}
                   onClick={() => setColumns(n)}
-                  className={`h-6 w-6 rounded text-xs font-mono transition-colors ${
+                  className={`h-6 w-6 text-xs font-mono transition-colors ${
                     columns === n ? "bg-ink text-paper" : "hover:text-flare"
                   }`}
                 >
                   {n}
                 </button>
               ))}
+            </div>
+
+            <div className="flex items-center border border-ink/20">
+              <span className="pl-4 pr-2 text-xs font-bold uppercase tracking-wide text-steel">
+                Sort by
+              </span>
+              <select
+                value={activeSort}
+                onChange={(e) => updateSort(e.target.value)}
+                className="bg-transparent py-2.5 pl-1 pr-4 text-xs font-bold uppercase tracking-wide focus:outline-none hover:text-flare transition-colors cursor-pointer"
+              >
+                {SORT_OPTIONS.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
         </div>

@@ -43,17 +43,10 @@ const ANNOUNCEMENTS = [
   "30-day trial on every order",
 ];
 
-function NavBadge({ badge }: { badge: { text: string; tone: "new" | "sale" } }) {
-  return (
-    <span
-      className={`rounded-full px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide ${
-        badge.tone === "sale" ? "bg-flare/15 text-flare" : "bg-moss/15 text-moss"
-      }`}
-    >
-      {badge.text}
-    </span>
-  );
-}
+const TONE_TEXT_CLASS: Record<"new" | "sale", string> = {
+  new: "text-flare",
+  sale: "text-clearance",
+};
 
 export function SiteHeader({
   categorySwatches = {},
@@ -219,10 +212,13 @@ export function SiteHeader({
               >
                 <Link
                   href={link.href}
-                  className="flex items-center gap-1.5 text-sm font-medium tracking-wide opacity-90 hover:opacity-100 hover:text-flare transition-colors"
+                  className={`flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide opacity-90 hover:opacity-100 transition-colors ${
+                    "badge" in link && link.badge
+                      ? `${TONE_TEXT_CLASS[link.badge.tone]} opacity-100`
+                      : "hover:text-flare"
+                  }`}
                 >
                   {link.label}
-                  {"badge" in link && link.badge && <NavBadge badge={link.badge} />}
                   {link.menu && <ChevronDown size={13} strokeWidth={2} />}
                 </Link>
 
@@ -322,10 +318,11 @@ export function SiteHeader({
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-3 font-display text-3xl"
+                  className={`flex items-center gap-3 font-display text-3xl ${
+                    "badge" in link && link.badge ? TONE_TEXT_CLASS[link.badge.tone] : ""
+                  }`}
                 >
                   {link.label}
-                  {"badge" in link && link.badge && <NavBadge badge={link.badge} />}
                 </Link>
               ))}
             </nav>
