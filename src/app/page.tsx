@@ -49,19 +49,21 @@ export default async function HomePage() {
       <Hero swatch={products[0]?.swatch} featured={heroFeatured} />
 
       {/* Featured collections */}
-      <section className="mx-auto max-w-[1800px] px-6 py-[2rem] md:py-[2.5rem]">
-        <Reveal>
-          <p className="eyebrow mb-2">Shop by Room</p>
-          <h2 className="font-display text-[1.125rem] md:text-[1.375rem] mb-8 max-w-lg">
-            Every room, one point of view
-          </h2>
-        </Reveal>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <section className="py-[2rem] md:py-[2.5rem]">
+        <div className="mx-auto max-w-[1800px] px-6">
+          <Reveal>
+            <p className="eyebrow mb-2">Shop by Room</p>
+            <h2 className="font-display text-[1.125rem] md:text-[1.375rem] mb-8 max-w-lg">
+              Every room, one point of view
+            </h2>
+          </Reveal>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-1">
           {ROOMS.map((room, i) => (
             <Reveal key={room.category} delay={i * 0.08}>
               <Link
                 href={`/shop?category=${room.category}`}
-                className="group relative block aspect-[3/4] overflow-hidden rounded-2xl shadow-soft hover:shadow-luxury transition-shadow duration-500"
+                className="group relative block aspect-[3/4] overflow-hidden shadow-soft hover:shadow-luxury transition-shadow duration-500"
               >
                 {room.image ? (
                   <Image
@@ -117,7 +119,7 @@ export default async function HomePage() {
       </section>
 
       {/* Editorial / lifestyle sections */}
-      <section className="mx-auto max-w-[1800px] px-6 py-[2rem] md:py-[2.5rem] space-y-12 md:space-y-16">
+      <section className="mx-auto max-w-[1800px] px-6 py-[2rem] md:py-[2.5rem] space-y-8 md:space-y-10">
         {Object.entries(collectionStories)
           .slice(0, 2)
           .map(([category, story], i) => {
@@ -126,25 +128,25 @@ export default async function HomePage() {
             return (
             <div
               key={story.title}
-              className={`grid md:grid-cols-2 gap-6 md:gap-10 items-center ${
+              className={`grid md:grid-cols-2 gap-4 md:gap-8 items-center ${
                 i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
               }`}
             >
               <Reveal direction={i % 2 === 1 ? "right" : "left"}>
                 {storyProduct?.image ? (
-                  <div className="relative aspect-[4/5] rounded-2xl shadow-soft overflow-hidden">
+                  <div className="relative aspect-[4/5] max-w-xs mx-auto md:mx-0 rounded-2xl shadow-soft overflow-hidden">
                     <Image
                       src={storyProduct.image}
                       alt={storyProduct.title}
                       fill
-                      sizes="(min-width: 768px) 50vw, 100vw"
+                      sizes="(min-width: 768px) 320px, 60vw"
                       className="object-cover"
                     />
                   </div>
                 ) : (
                   <MaterialSwatch
                     gradient={storyProduct?.swatch ?? products[0]?.swatch}
-                    className="aspect-[4/5] rounded-2xl shadow-soft"
+                    className="aspect-[4/5] max-w-xs mx-auto md:mx-0 rounded-2xl shadow-soft"
                   />
                 )}
               </Reveal>
