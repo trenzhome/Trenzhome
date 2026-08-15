@@ -32,13 +32,13 @@ export default async function HomePage() {
     const seenCategories = new Set<string>();
     const picks = [];
     for (const p of withImages) {
-      if (picks.length >= 3) break;
+      if (picks.length >= 4) break;
       if (seenCategories.has(p.category)) continue;
       seenCategories.add(p.category);
       picks.push(p);
     }
     for (const p of withImages) {
-      if (picks.length >= 3) break;
+      if (picks.length >= 4) break;
       if (!picks.includes(p)) picks.push(p);
     }
     return picks.map((p) => ({ slug: p.slug, title: p.title, price: p.basePrice, image: p.image }));
