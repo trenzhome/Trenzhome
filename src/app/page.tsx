@@ -49,14 +49,14 @@ export default async function HomePage() {
       <Hero swatch={products[0]?.swatch} featured={heroFeatured} />
 
       {/* Featured collections */}
-      <section className="mx-auto max-w-[1800px] px-6 py-24 md:py-32">
+      <section className="mx-auto max-w-[1800px] px-6 py-12 md:py-16">
         <Reveal>
-          <p className="eyebrow mb-3">Shop by Room</p>
-          <h2 className="font-display text-3xl md:text-4xl mb-12 max-w-lg">
+          <p className="eyebrow mb-2">Shop by Room</p>
+          <h2 className="font-display text-2xl md:text-3xl mb-8 max-w-lg">
             Every room, one point of view
           </h2>
         </Reveal>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {ROOMS.map((room, i) => (
             <Reveal key={room.category} delay={i * 0.08}>
               <Link
@@ -78,9 +78,9 @@ export default async function HomePage() {
                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6 flex items-center justify-between">
-                  <span className="font-display text-xl text-paper">{room.label}</span>
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-paper/90 text-ink text-sm opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
+                <div className="absolute inset-x-0 bottom-0 p-4 flex items-center justify-between">
+                  <span className="font-display text-base text-paper">{room.label}</span>
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-paper/90 text-ink text-xs opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
                     &rarr;
                   </span>
                 </div>
@@ -93,20 +93,20 @@ export default async function HomePage() {
       <ShopTheLook products={products} />
 
       {/* Featured products */}
-      <section className="bg-fog py-24 md:py-32">
+      <section className="bg-fog py-12 md:py-16">
         <div className="mx-auto max-w-[1800px] px-6">
           <Reveal>
-            <div className="flex items-end justify-between mb-12">
+            <div className="flex items-end justify-between mb-8">
               <div>
-                <p className="eyebrow mb-3">Curated</p>
-                <h2 className="font-display text-3xl md:text-4xl">New This Season</h2>
+                <p className="eyebrow mb-2">Curated</p>
+                <h2 className="font-display text-2xl md:text-3xl">New This Season</h2>
               </div>
               <Link href="/shop" className="btn-outline hidden sm:inline-flex">
                 View all
               </Link>
             </div>
           </Reveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8">
             {featured.map((product, i) => (
               <Reveal key={product.id} delay={i * 0.06}>
                 <ProductCard product={product} />
@@ -117,7 +117,7 @@ export default async function HomePage() {
       </section>
 
       {/* Editorial / lifestyle sections */}
-      <section className="mx-auto max-w-[1800px] px-6 py-24 md:py-32 space-y-24 md:space-y-32">
+      <section className="mx-auto max-w-[1800px] px-6 py-12 md:py-16 space-y-12 md:space-y-16">
         {Object.entries(collectionStories)
           .slice(0, 2)
           .map(([category, story], i) => {
@@ -126,7 +126,7 @@ export default async function HomePage() {
             return (
             <div
               key={story.title}
-              className={`grid md:grid-cols-2 gap-10 md:gap-16 items-center ${
+              className={`grid md:grid-cols-2 gap-6 md:gap-10 items-center ${
                 i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
               }`}
             >
@@ -149,9 +149,9 @@ export default async function HomePage() {
                 )}
               </Reveal>
               <Reveal direction={i % 2 === 1 ? "left" : "right"} delay={0.1}>
-                <p className="eyebrow mb-3">Editorial</p>
-                <h3 className="font-display text-3xl md:text-4xl mb-5">{story.title}</h3>
-                <p className="text-steel text-lg leading-relaxed max-w-md mb-8">{story.copy}</p>
+                <p className="eyebrow mb-2">Editorial</p>
+                <h3 className="font-display text-2xl md:text-3xl mb-3">{story.title}</h3>
+                <p className="text-steel text-sm leading-relaxed max-w-md mb-5">{story.copy}</p>
                 <Link href="/shop" className="btn-flare">
                   Explore the Collection
                 </Link>

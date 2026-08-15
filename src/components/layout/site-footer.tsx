@@ -51,11 +51,11 @@ const SOCIALS = [
 
 export function SiteFooter() {
   return (
-    <footer className="bg-ink text-paper mt-24">
-      <div className="mx-auto max-w-[1800px] px-6 py-20 grid grid-cols-2 md:grid-cols-6 gap-10">
+    <footer className="bg-ink text-paper mt-12">
+      <div className="mx-auto max-w-[1800px] px-6 py-12 grid grid-cols-2 md:grid-cols-6 gap-6">
         <div className="col-span-2 md:col-span-2">
-          <p className="font-display text-3xl mb-4">Trenzhome</p>
-          <p className="text-sm text-paper/60 max-w-xs leading-relaxed mb-6">
+          <p className="font-display text-2xl mb-3">Trenzhome</p>
+          <p className="text-sm text-paper/60 max-w-xs leading-relaxed mb-4">
             Furniture and home goods built from honest materials, made to
             outlast the trend cycle.
           </p>
@@ -65,16 +65,16 @@ export function SiteFooter() {
                 key={label}
                 href="#"
                 aria-label={label}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-paper/15 hover:border-flare hover:text-flare transition-colors"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-paper/15 hover:border-flare hover:text-flare transition-colors"
               >
-                <Icon size={15} strokeWidth={1.75} />
+                <Icon size={14} strokeWidth={1.75} />
               </a>
             ))}
           </div>
         </div>
         {COLUMNS.map((col) => (
           <div key={col.title}>
-            <p className="eyebrow text-paper/50 mb-4">{col.title}</p>
+            <p className="eyebrow text-paper/50 mb-3">{col.title}</p>
             <ul className="space-y-2.5">
               {col.links.map((link) => (
                 <li key={link.label}>

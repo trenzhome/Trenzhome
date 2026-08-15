@@ -15,10 +15,10 @@ export function ShopFaqs() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="bg-fog py-20">
+    <section className="bg-fog py-12">
       <div className="mx-auto max-w-[1800px] px-6">
         <p className="eyebrow mb-3">Questions</p>
-        <h2 className="font-display text-3xl md:text-4xl mb-10 max-w-lg">Frequently Asked</h2>
+        <h2 className="font-display text-2xl md:text-3xl mb-10 max-w-lg">Frequently Asked</h2>
         <div className="max-w-2xl">
           {FAQS.map((faq, i) => {
             const isOpen = open === i;

@@ -64,9 +64,9 @@ export default function CustomerServicePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div className="mx-auto max-w-[1800px] px-6 py-16">
+    <div className="mx-auto max-w-[1800px] px-6 py-10">
       <p className="eyebrow mb-3">Help Center</p>
-      <h1 className="font-display text-5xl mb-6">Customer Service</h1>
+      <h1 className="font-display text-3xl mb-6">Customer Service</h1>
 
       <nav className="flex flex-wrap gap-3 mb-16">
         {NAV.map((item) => (
@@ -83,7 +83,7 @@ export default function CustomerServicePage() {
       <section id="shipping" className="scroll-mt-32 py-10 border-t border-ink/10">
         <div className="flex items-start gap-4 mb-4">
           <Truck size={20} strokeWidth={1.75} className="text-flare mt-1" />
-          <h2 className="font-display text-2xl">Shipping</h2>
+          <h2 className="font-display text-xl">Shipping</h2>
         </div>
         <div className="max-w-2xl text-ink/80 leading-relaxed space-y-3 pl-9">
           <p>Free standard shipping on orders over $150. Standard delivery arrives in 5–9 business days from dispatch.</p>
@@ -95,7 +95,7 @@ export default function CustomerServicePage() {
       <section id="returns" className="scroll-mt-32 py-10 border-t border-ink/10">
         <div className="flex items-start gap-4 mb-4">
           <RotateCcw size={20} strokeWidth={1.75} className="text-flare mt-1" />
-          <h2 className="font-display text-2xl">Returns &amp; Refunds</h2>
+          <h2 className="font-display text-xl">Returns &amp; Refunds</h2>
         </div>
         <div className="max-w-2xl text-ink/80 leading-relaxed space-y-3 pl-9">
           <p>Returns are accepted within 30 days of delivery in original, unused condition. Custom and made-to-order pieces are final sale.</p>
@@ -107,7 +107,7 @@ export default function CustomerServicePage() {
       <section id="warranty" className="scroll-mt-32 py-10 border-t border-ink/10">
         <div className="flex items-start gap-4 mb-4">
           <ShieldCheck size={20} strokeWidth={1.75} className="text-flare mt-1" />
-          <h2 className="font-display text-2xl">Warranty</h2>
+          <h2 className="font-display text-xl">Warranty</h2>
         </div>
         <div className="max-w-2xl text-ink/80 leading-relaxed space-y-3 pl-9">
           <p>All furniture is covered by a 2-year structural warranty against manufacturing defects in frames, hardware, and mechanisms.</p>
@@ -116,12 +116,12 @@ export default function CustomerServicePage() {
       </section>
 
       <section id="track-order" className="scroll-mt-32 py-10 border-t border-ink/10">
-        <h2 className="font-display text-2xl mb-6">Track Your Order</h2>
+        <h2 className="font-display text-xl mb-6">Track Your Order</h2>
         <TrackOrderForm />
       </section>
 
       <section id="faq" className="scroll-mt-32 py-10 border-t border-ink/10">
-        <h2 className="font-display text-2xl mb-6">Frequently Asked Questions</h2>
+        <h2 className="font-display text-xl mb-6">Frequently Asked Questions</h2>
         <div className="max-w-2xl">
           {FAQS.map((faq, i) => {
             const isOpen = openFaq === i;

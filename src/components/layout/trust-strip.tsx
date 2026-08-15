@@ -35,17 +35,17 @@ const POINTS = [
 export function TrustStrip() {
   return (
     <section className="border-t border-ink/10 bg-fog">
-      <div className="mx-auto max-w-[1800px] px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="mx-auto max-w-[1800px] px-6 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {POINTS.map(({ icon: Icon, title, copy, href, linkLabel }) => (
           <div
             key={title}
-            className="group rounded-2xl border border-ink/10 bg-paper p-6 transition-shadow duration-300 hover:shadow-soft"
+            className="group rounded-xl border border-ink/10 bg-paper p-4 transition-shadow duration-300 hover:shadow-soft"
           >
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-fog text-flare mb-5">
-              <Icon size={20} strokeWidth={1.5} />
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-fog text-flare mb-3">
+              <Icon size={17} strokeWidth={1.5} />
             </span>
-            <p className="font-display text-base mb-2">{title}</p>
-            <p className="text-sm text-steel leading-relaxed mb-5">{copy}</p>
+            <p className="font-display text-sm mb-1.5">{title}</p>
+            <p className="text-xs text-steel leading-relaxed mb-3">{copy}</p>
             <Link
               href={href}
               className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-ink group-hover:text-flare transition-colors"

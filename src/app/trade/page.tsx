@@ -30,9 +30,9 @@ export default function TradePage() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <div className="mx-auto max-w-[1800px] px-6 py-16">
+    <div className="mx-auto max-w-[1800px] px-6 py-10">
       <p className="eyebrow mb-3">Business</p>
-      <h1 className="font-display text-5xl mb-4">Trade &amp; Wholesale</h1>
+      <h1 className="font-display text-3xl mb-4">Trade &amp; Wholesale</h1>
       <p className="text-steel max-w-lg mb-16">
         For designers, retailers, hospitality buyers, and companies furnishing at scale.
       </p>
@@ -50,7 +50,7 @@ export default function TradePage() {
       </div>
 
       <div className="max-w-xl">
-        <h2 className="font-display text-2xl mb-6">Apply for Access</h2>
+        <h2 className="font-display text-xl mb-6">Apply for Access</h2>
         {submitted ? (
           <div className="rounded-2xl bg-fog p-8">
             <p className="font-medium mb-2">Application received</p>

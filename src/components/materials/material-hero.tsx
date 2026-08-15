@@ -17,7 +17,7 @@ export function MaterialHero({
       <div className="relative z-10 px-8 md:px-14 pb-12 w-full">
         <Reveal>
           <p className="eyebrow text-paper/60 mb-3">Material Guide</p>
-          <h1 className="font-display text-4xl md:text-6xl mb-3">{name}</h1>
+          <h1 className="font-display text-3xl md:text-5xl mb-3">{name}</h1>
           <p className="text-paper/70 max-w-md">{tagline}</p>
         </Reveal>
       </div>

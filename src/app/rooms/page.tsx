@@ -17,9 +17,9 @@ export default async function RoomsIndexPage() {
     products.find((p) => categories.includes(p.category) && p.image)?.image;
 
   return (
-    <div className="mx-auto max-w-[1800px] px-6 py-16">
+    <div className="mx-auto max-w-[1800px] px-6 py-10">
       <p className="eyebrow mb-3">Inspiration</p>
-      <h1 className="font-display text-5xl mb-4">Shop by Room</h1>
+      <h1 className="font-display text-3xl mb-4">Shop by Room</h1>
       <p className="text-steel max-w-lg mb-14">
         Design inspiration, curated palettes, and style guidance for every room in the house.
       </p>
@@ -52,7 +52,7 @@ export default async function RoomsIndexPage() {
                   <p className="text-paper/60 text-xs uppercase tracking-widest2 font-mono mb-2">
                     {room.tagline}
                   </p>
-                  <span className="font-display text-2xl text-paper">{room.name}</span>
+                  <span className="font-display text-xl text-paper">{room.name}</span>
                 </div>
               </Link>
             </Reveal>

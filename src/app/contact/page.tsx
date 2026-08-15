@@ -13,9 +13,9 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <div className="mx-auto max-w-[1800px] px-6 py-16">
+    <div className="mx-auto max-w-[1800px] px-6 py-10">
       <p className="eyebrow mb-3">Customer Service</p>
-      <h1 className="font-display text-5xl mb-4">Get in Touch</h1>
+      <h1 className="font-display text-3xl mb-4">Get in Touch</h1>
       <p className="text-steel max-w-lg mb-14">
         Questions about an order, a material, or anything else — we usually reply within one business day.
       </p>
@@ -38,7 +38,7 @@ export default function ContactPage() {
         <div className="md:col-span-3">
           {submitted ? (
             <div className="rounded-2xl bg-fog p-10 text-center">
-              <p className="font-display text-2xl mb-2">Message sent</p>
+              <p className="font-display text-xl mb-2">Message sent</p>
               <p className="text-steel">Thanks — we&rsquo;ll get back to you within one business day.</p>
             </div>
           ) : (
