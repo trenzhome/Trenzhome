@@ -119,11 +119,11 @@ export function CategoryRail({
             <Link
               key={item.label}
               href={item.value ? `/shop?category=${item.value}` : "/shop"}
-              className={`flex shrink-0 items-center gap-2 whitespace-nowrap px-6 py-3.5 text-xs font-bold uppercase tracking-wide transition-colors ${
+              className={`flex shrink-0 items-center gap-1.5 whitespace-nowrap px-4 py-2.5 text-[11px] font-bold uppercase tracking-wide transition-colors ${
                 isActive ? "bg-flare text-paper" : "bg-ink text-paper hover:bg-charcoal"
               }`}
             >
-              <Icon size={15} strokeWidth={1.75} />
+              <Icon size={13} strokeWidth={1.75} />
               {item.label}
             </Link>
           );

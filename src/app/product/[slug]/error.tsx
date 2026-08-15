@@ -14,7 +14,7 @@ export default function ProductError({
   }, [error]);
 
   return (
-    <div className="mx-auto max-w-xl px-6 py-32 text-center">
+    <div className="mx-auto max-w-xl px-6 py-16 text-center">
       <p className="eyebrow mb-3">Temporarily Unavailable</p>
       <h1 className="font-display text-3xl mb-4">We couldn&apos;t load this product</h1>
       <p className="text-steel mb-8">

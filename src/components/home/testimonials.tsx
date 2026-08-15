@@ -27,30 +27,30 @@ const REVIEWS = [
 
 export function Testimonials() {
   return (
-    <section className="mx-auto max-w-[1800px] px-6 py-24 md:py-32">
+    <section className="mx-auto max-w-[1800px] px-6 py-12 md:py-16">
       <Reveal>
-        <p className="eyebrow mb-3 text-center">In Their Words</p>
-        <h2 className="font-display text-3xl md:text-4xl mb-14 text-center">
+        <p className="eyebrow mb-2 text-center">In Their Words</p>
+        <h2 className="font-display text-2xl md:text-3xl mb-8 text-center">
           Trusted by rooms that get lived in
         </h2>
       </Reveal>
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-3 gap-4">
         {REVIEWS.map((review, i) => (
           <Reveal key={review.name} delay={i * 0.08}>
-            <div className="card-luxury p-8 h-full flex flex-col">
-              <div className="flex gap-0.5 mb-5 text-flare">
+            <div className="card-luxury p-6 h-full flex flex-col">
+              <div className="flex gap-0.5 mb-3 text-flare">
                 {Array.from({ length: 5 }).map((_, idx) => (
                   <Star
                     key={idx}
-                    size={16}
+                    size={14}
                     fill={idx < review.rating ? "currentColor" : "none"}
                     strokeWidth={1.5}
                   />
                 ))}
               </div>
-              <p className="text-ink leading-relaxed mb-8 flex-1">&ldquo;{review.quote}&rdquo;</p>
+              <p className="text-ink text-sm leading-relaxed mb-6 flex-1">&ldquo;{review.quote}&rdquo;</p>
               <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-sand text-ink text-xs font-bold font-mono">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sand text-ink text-xs font-bold font-mono">
                   {review.initials}
                 </span>
                 <div className="flex items-center gap-1.5">
