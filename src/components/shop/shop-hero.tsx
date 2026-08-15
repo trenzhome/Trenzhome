@@ -45,7 +45,7 @@ export function ShopHero({
         className="absolute -left-16 bottom-0 h-[260px] w-[260px] rounded-full bg-flare/20 blur-[90px]"
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 py-14 w-full flex items-center justify-between gap-10">
+      <div className="relative z-10 mx-auto max-w-[1800px] px-6 py-14 w-full flex items-center justify-between gap-10">
         <Reveal>
           <p className="eyebrow text-paper/60 mb-3">Shop</p>
           <h1 className="font-display text-4xl md:text-6xl mb-4 max-w-2xl">{title}</h1>

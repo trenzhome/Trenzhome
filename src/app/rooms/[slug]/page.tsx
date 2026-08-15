@@ -39,7 +39,7 @@ export default async function RoomPage({
   const heroImage = curated.find((p) => p.image)?.image;
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-6">
+    <div className="mx-auto max-w-[1800px] px-6 py-6">
       <RoomHero
         name={room.name}
         tagline={room.tagline}

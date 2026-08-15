@@ -35,7 +35,7 @@ export default async function ProductPage({
   const story = collectionStories[product.category];
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-12">
+    <div className="mx-auto max-w-[1800px] px-6 py-12">
       <ProductDetail product={product} />
 
       <ProductTabs product={product} />

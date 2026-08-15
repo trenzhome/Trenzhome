@@ -12,7 +12,7 @@ export default function CareersPage() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-16">
+    <div className="mx-auto max-w-[1800px] px-6 py-16">
       <p className="eyebrow mb-3">Careers</p>
       <h1 className="font-display text-5xl mb-6">We&rsquo;re Small, and Growing Carefully</h1>
       <p className="text-steel max-w-lg mb-16 leading-relaxed">

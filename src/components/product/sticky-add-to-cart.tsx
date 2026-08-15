@@ -30,7 +30,7 @@ export function StickyAddToCart({
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="fixed bottom-0 inset-x-0 z-30 glass-panel border-t border-ink/10"
         >
-          <div className="mx-auto max-w-7xl px-6 py-4 flex items-center gap-4">
+          <div className="mx-auto max-w-[1800px] px-6 py-4 flex items-center gap-4">
             <MaterialSwatch gradient={swatch} className="h-12 w-10 rounded-lg shrink-0" />
             <div className="flex-1 min-w-0">
               <p className="font-display text-base truncate">{title}</p>

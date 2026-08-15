@@ -148,7 +148,7 @@ export function SiteHeader({
           solid ? "glass-panel" : "bg-transparent border-b border-transparent"
         } ${!solid ? "text-paper" : "text-ink"}`}
       >
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-[1800px] px-6">
           <div className="flex h-20 items-center gap-4">
             <Link href="/" className="font-display text-2xl md:text-3xl tracking-tight shrink-0">
               Trenzhome

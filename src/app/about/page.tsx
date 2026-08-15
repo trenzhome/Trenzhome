@@ -21,7 +21,7 @@ export default async function AboutPage() {
   const products = await getProducts();
   const heroSwatch = products[0]?.swatch ?? "linear-gradient(135deg, #D9CBB5, #B8A582)";
   return (
-    <div className="mx-auto max-w-7xl px-6 py-16">
+    <div className="mx-auto max-w-[1800px] px-6 py-16">
       <p className="eyebrow mb-3">About</p>
       <h1 className="font-display text-5xl mb-6">Furnish Different</h1>
 

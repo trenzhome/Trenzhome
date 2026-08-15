@@ -49,7 +49,7 @@ export default async function HomePage() {
       <Hero swatch={products[0]?.swatch} featured={heroFeatured} />
 
       {/* Featured collections */}
-      <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+      <section className="mx-auto max-w-[1800px] px-6 py-24 md:py-32">
         <Reveal>
           <p className="eyebrow mb-3">Shop by Room</p>
           <h2 className="font-display text-3xl md:text-4xl mb-12 max-w-lg">
@@ -94,7 +94,7 @@ export default async function HomePage() {
 
       {/* Featured products */}
       <section className="bg-fog py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-[1800px] px-6">
           <Reveal>
             <div className="flex items-end justify-between mb-12">
               <div>
@@ -117,7 +117,7 @@ export default async function HomePage() {
       </section>
 
       {/* Editorial / lifestyle sections */}
-      <section className="mx-auto max-w-7xl px-6 py-24 md:py-32 space-y-24 md:space-y-32">
+      <section className="mx-auto max-w-[1800px] px-6 py-24 md:py-32 space-y-24 md:space-y-32">
         {Object.entries(collectionStories)
           .slice(0, 2)
           .map(([category, story], i) => {

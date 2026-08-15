@@ -41,7 +41,7 @@ export default async function MaterialPage({
     : [];
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-6">
+    <div className="mx-auto max-w-[1800px] px-6 py-6">
       <MaterialHero name={material.name} tagline={material.tagline} swatch={material.swatch} />
 
       <MaterialFacts material={material} />

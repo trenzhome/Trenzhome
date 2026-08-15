@@ -27,7 +27,7 @@ export function BuyingGuide() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-20">
+    <section className="mx-auto max-w-[1800px] px-6 py-20">
       <p className="eyebrow mb-3">Before You Buy</p>
       <h2 className="font-display text-3xl md:text-4xl mb-10 max-w-lg">A Short Buying Guide</h2>
       <div className="max-w-2xl">

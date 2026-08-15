@@ -164,7 +164,7 @@ export function Hero({
         )}
       </motion.div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 w-full">
+      <div className="relative z-10 mx-auto max-w-[1800px] px-6 w-full">
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
