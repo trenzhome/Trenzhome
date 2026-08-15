@@ -48,7 +48,7 @@ export default async function MaterialPage({
 
       <section className="pb-20">
         <p className="eyebrow mb-3">Made With {material.name}</p>
-        <h2 className="font-display text-3xl mb-8">Product Recommendations</h2>
+        <h2 className="font-display text-2xl mb-8">Product Recommendations</h2>
         <ProductGridOrEmpty
           products={recommended}
           emptyMessage={`We don't have a ${material.name.toLowerCase()} product in stock yet — check back soon.`}

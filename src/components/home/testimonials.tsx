@@ -27,10 +27,10 @@ const REVIEWS = [
 
 export function Testimonials() {
   return (
-    <section className="mx-auto max-w-[1800px] px-6 py-12 md:py-16">
+    <section className="mx-auto max-w-[1800px] px-6 py-[2rem] md:py-[2.5rem]">
       <Reveal>
         <p className="eyebrow mb-2 text-center">In Their Words</p>
-        <h2 className="font-display text-2xl md:text-3xl mb-8 text-center">
+        <h2 className="font-display text-[1.125rem] md:text-[1.375rem] mb-8 text-center">
           Trusted by rooms that get lived in
         </h2>
       </Reveal>

@@ -16,7 +16,7 @@ export function ShopHero({
   const [main, side1, side2] = collage;
 
   return (
-    <section className="relative min-h-[32vh] md:min-h-[36vh] bg-ink text-paper overflow-hidden rounded-2xl flex items-center">
+    <section className="relative min-h-[24vh] md:min-h-[26vh] bg-ink text-paper overflow-hidden rounded-2xl flex items-center">
       <MaterialSwatch
         gradient="linear-gradient(135deg, #2B2823 0%, #161512 55%, #0D0C0A 100%)"
         className="absolute -inset-10 h-[calc(100%+80px)] w-[calc(100%+80px)]"
@@ -27,7 +27,7 @@ export function ShopHero({
         className="absolute -left-16 bottom-0 h-[200px] w-[200px] rounded-full bg-flare/20 blur-[80px]"
       />
 
-      <div className="absolute inset-y-0 right-0 hidden md:block w-[36%] lg:w-[32%]">
+      <div className="absolute inset-y-0 right-0 hidden md:block w-[30%] lg:w-[26%]">
         <FloatingCard
           product={main}
           rotate={-3}
@@ -58,11 +58,11 @@ export function ShopHero({
         )}
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1800px] px-6 py-8 w-full">
+      <div className="relative z-10 mx-auto max-w-[1800px] px-6 py-5 w-full">
         <Reveal>
-          <p className="eyebrow text-paper/60 mb-2">Shop</p>
-          <h1 className="font-display text-2xl md:text-4xl mb-3 max-w-2xl">{title}</h1>
-          <p className="text-paper/70 text-sm max-w-md">{copy}</p>
+          <p className="eyebrow text-paper/60 mb-1.5">Shop</p>
+          <h1 className="font-display text-xl md:text-2xl mb-2 max-w-2xl">{title}</h1>
+          <p className="text-paper/70 text-xs max-w-md">{copy}</p>
         </Reveal>
       </div>
     </section>

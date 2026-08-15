@@ -45,7 +45,7 @@ export function MaterialExplorer({
               <X size={20} />
             </button>
             <p className="eyebrow mb-2">Material</p>
-            <h3 className="font-display text-2xl mb-4">{detail.name}</h3>
+            <h3 className="font-display text-xl mb-4">{detail.name}</h3>
             <dl className="space-y-4 text-sm">
               <div>
                 <dt className="font-bold uppercase tracking-wide text-xs text-steel mb-1">Texture</dt>

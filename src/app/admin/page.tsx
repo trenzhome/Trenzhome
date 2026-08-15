@@ -14,10 +14,10 @@ export default async function AdminDashboard() {
     <div className="min-h-screen bg-paper text-ink">
       <div className="bg-ink text-paper px-8 py-6">
         <p className="font-mono text-[11px] uppercase tracking-widest2 text-flare mb-1">Admin</p>
-        <h1 className="font-display text-3xl">Dashboard</h1>
+        <h1 className="font-display text-2xl">Dashboard</h1>
       </div>
 
-      <div className="grid grid-cols-3 gap-6 px-8 py-8">
+      <div className="grid grid-cols-3 gap-6 px-8 py-6">
         <StatCard label="Products" value={products.length} />
         <StatCard label="Units in stock" value={totalUnits} />
         <StatCard label="Low stock variants" value={lowStock.length} />
@@ -67,7 +67,7 @@ function StatCard({ label, value }: { label: string; value: number }) {
   return (
     <div className="border border-stone-light/60 p-6">
       <p className="eyebrow mb-2">{label}</p>
-      <p className="font-display text-3xl">{value}</p>
+      <p className="font-display text-2xl">{value}</p>
     </div>
   );
 }

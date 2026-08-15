@@ -29,7 +29,7 @@ export function CartDrawer() {
       />
       <div className="absolute right-0 top-0 h-full w-full max-w-md bg-paper shadow-luxury flex flex-col rounded-l-3xl overflow-hidden">
         <div className="flex items-center justify-between px-6 h-20 bg-ink text-paper">
-          <h2 className="font-display text-2xl">Your Bag</h2>
+          <h2 className="font-display text-xl">Your Bag</h2>
           <button onClick={closeCart} aria-label="Close cart" className="hover:text-flare transition-colors">
             <X size={20} strokeWidth={2} />
           </button>

@@ -36,12 +36,12 @@ export function ShopTheLook({ products }: { products: Product[] }) {
   if (SCENE.length === 0) return null;
 
   return (
-    <section className="mx-auto max-w-[1800px] px-6 py-12 md:py-16">
+    <section className="mx-auto max-w-[1800px] px-6 py-[2rem] md:py-[2.5rem]">
       <Reveal>
         <div className="flex items-end justify-between mb-8">
           <div>
             <p className="eyebrow mb-2">Shop the Look</p>
-            <h2 className="font-display text-2xl md:text-3xl max-w-lg">
+            <h2 className="font-display text-[1.125rem] md:text-[1.375rem] max-w-lg">
               One room, tap any piece
             </h2>
           </div>

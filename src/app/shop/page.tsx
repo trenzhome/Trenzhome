@@ -121,7 +121,7 @@ export default async function ShopPage({
         <CategoryRail categories={categories} activeCategory={params.category} />
       </div>
 
-      <div className="mx-auto max-w-[1800px] px-6 py-8">
+      <div className="mx-auto max-w-[1800px] px-6 py-6">
         <ShopBrowser
           products={list}
           categories={categories}

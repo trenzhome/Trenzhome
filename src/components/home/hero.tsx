@@ -88,7 +88,7 @@ export function Hero({
   }, []);
 
   return (
-    <section className="relative -mt-[116px] md:-mt-[164px] min-h-[62vh] md:min-h-[68vh] pt-[116px] md:pt-[164px] bg-ink text-paper overflow-hidden flex items-center">
+    <section className="relative -mt-[116px] md:-mt-[164px] min-h-[42vh] md:min-h-[46vh] pt-[116px] md:pt-[164px] bg-ink text-paper overflow-hidden flex items-center">
       {/* Dark ambient backdrop */}
       <motion.div
         className="absolute inset-0"
@@ -123,7 +123,7 @@ export function Hero({
 
       {/* Desktop collage — spans the full hero height so there's no dead space */}
       <motion.div
-        className="absolute inset-y-0 right-0 hidden md:block w-[36%] lg:w-[32%]"
+        className="absolute inset-y-0 right-0 hidden md:block w-[30%] lg:w-[26%]"
         animate={{ x: offset.x * 0.6, y: offset.y * 0.6 }}
         transition={{ type: "spring", stiffness: 40, damping: 20 }}
       >
@@ -169,7 +169,7 @@ export function Hero({
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="eyebrow text-paper/60 mb-4"
+          className="eyebrow text-paper/60 mb-2"
         >
           The Autumn Edit
         </motion.p>
@@ -177,7 +177,7 @@ export function Hero({
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-          className="font-display italic text-3xl sm:text-4xl md:text-5xl leading-[1.05] mb-5 max-w-xl"
+          className="font-display italic text-xl sm:text-[1.375rem] md:text-[1.625rem] leading-[1.05] mb-3 max-w-md"
         >
           Furniture, considered.
         </motion.h1>
@@ -185,7 +185,7 @@ export function Hero({
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.25 }}
-          className="text-paper/70 text-sm max-w-sm mb-7 leading-relaxed"
+          className="text-paper/70 text-xs max-w-xs mb-4 leading-relaxed"
         >
           One honest material per piece — a slab of travertine, a bolt of
           Belgian linen — made to outlast the trend cycle, not chase it.
@@ -202,7 +202,7 @@ export function Hero({
 
         {/* Mobile collage — the desktop panel is hidden below md, so give phones
             a shoppable image strip too instead of a flat wall of text. */}
-        <div className="mt-8 flex gap-3 overflow-x-auto pb-2 md:hidden -mx-6 px-6 snap-x snap-mandatory">
+        <div className="mt-5 flex gap-3 overflow-x-auto pb-2 md:hidden -mx-6 px-6 snap-x snap-mandatory">
           {[main, side1, side2, side3]
             .filter((p): p is HeroProduct => Boolean(p?.image))
             .map((p, i) => (
@@ -211,7 +211,7 @@ export function Hero({
                 initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 + i * 0.1 }}
-                className="relative h-32 w-24 flex-none snap-start"
+                className="relative h-24 w-20 flex-none snap-start"
               >
                 <Link
                   href={`/product/${p.slug}`}

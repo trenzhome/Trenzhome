@@ -150,7 +150,7 @@ export function SiteHeader({
       >
         <div className="mx-auto max-w-[1800px] px-6">
           <div className="flex h-20 items-center gap-4">
-            <Link href="/" className="font-display text-2xl md:text-3xl tracking-tight shrink-0">
+            <Link href="/" className="font-display text-[1.125rem] md:text-[1.375rem] tracking-tight shrink-0">
               Trenzhome
             </Link>
 
@@ -294,7 +294,7 @@ export function SiteHeader({
             className="fixed inset-0 z-50 bg-paper flex flex-col"
           >
             <div className="flex items-center justify-between px-6 h-20 border-b border-ink/10">
-              <span className="font-display text-2xl">Menu</span>
+              <span className="font-display text-xl">Menu</span>
               <button
                 aria-label="Close menu"
                 onClick={() => setMobileOpen(false)}
@@ -303,7 +303,7 @@ export function SiteHeader({
                 <X size={22} strokeWidth={1.75} />
               </button>
             </div>
-            <nav className="flex-1 overflow-y-auto px-6 py-8 space-y-6">
+            <nav className="flex-1 overflow-y-auto px-6 py-6 space-y-6">
               {[
                 ...SHOP_CATEGORY_LINKS,
                 { label: "Rooms", href: "/rooms" },
@@ -318,7 +318,7 @@ export function SiteHeader({
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className={`flex items-center gap-3 font-display text-3xl ${
+                  className={`flex items-center gap-3 font-display text-2xl ${
                     "badge" in link && link.badge ? TONE_TEXT_CLASS[link.badge.tone] : ""
                   }`}
                 >
