@@ -79,6 +79,7 @@ export default async function ShopPage({
     "Furniture and home goods built from honest materials, made to outlast the trend cycle.";
   const DEFAULT_SWATCH = "linear-gradient(135deg, #D9CBB5, #B8A582)";
   const heroSwatch = list[0]?.swatch ?? products[0]?.swatch ?? DEFAULT_SWATCH;
+  const heroImage = list.find((p) => p.image)?.image ?? products.find((p) => p.image)?.image;
 
   const relatedCollections = categories
     .filter((c) => c.toLowerCase() !== params.category?.toLowerCase())
@@ -101,7 +102,7 @@ export default async function ShopPage({
       </div>
 
       <div className="mx-auto max-w-7xl px-6 pt-4">
-        <ShopHero title={heroTitle} copy={heroCopy} swatch={heroSwatch} />
+        <ShopHero title={heroTitle} copy={heroCopy} swatch={heroSwatch} image={heroImage} />
       </div>
 
       <div className="mx-auto max-w-7xl px-6 pt-8">
