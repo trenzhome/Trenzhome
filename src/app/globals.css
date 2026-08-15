@@ -58,4 +58,21 @@
   .scrollbar-none::-webkit-scrollbar {
     display: none;
   }
+  .scrollbar-brand {
+    scrollbar-width: thin;
+    scrollbar-color: theme("colors.steel-light") transparent;
+  }
+  .scrollbar-brand::-webkit-scrollbar {
+    height: 5px;
+  }
+  .scrollbar-brand::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-brand::-webkit-scrollbar-thumb {
+    background-color: theme("colors.steel-light");
+    border-radius: 999px;
+  }
+  .scrollbar-brand::-webkit-scrollbar-thumb:hover {
+    background-color: theme("colors.steel");
+  }
 }
