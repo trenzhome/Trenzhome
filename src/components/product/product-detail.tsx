@@ -6,6 +6,7 @@ import { Star, Minus, Plus, Truck } from "lucide-react";
 import { Product } from "@/types";
 import { useCart } from "@/components/cart/cart-context";
 import { ShowroomViewer } from "./showroom-viewer";
+import { ProductGallery } from "./product-gallery";
 import { Configurator } from "./configurator";
 import { MaterialExplorer } from "./material-explorer";
 import { ProductActions } from "./product-actions";
@@ -66,12 +67,16 @@ export function ProductDetail({ product }: { product: Product }) {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <ShowroomViewer
-          gradient={product.swatch}
-          tint={variant.tint}
-          hotspots={product.hotspots}
-          onExploreMaterial={product.materialDetail ? () => setMaterialOpen(true) : undefined}
-        />
+        {product.images && product.images.length > 0 ? (
+          <ProductGallery images={product.images} title={product.title} />
+        ) : (
+          <ShowroomViewer
+            gradient={product.swatch}
+            tint={variant.tint}
+            hotspots={product.hotspots}
+            onExploreMaterial={product.materialDetail ? () => setMaterialOpen(true) : undefined}
+          />
+        )}
       </motion.div>
 
       <motion.div
@@ -83,21 +88,25 @@ export function ProductDetail({ product }: { product: Product }) {
         <h1 className="font-display text-5xl mb-3">{product.title}</h1>
 
         <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-2">
-            <div className="flex text-flare">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  size={15}
-                  fill={i < Math.round(product.rating) ? "currentColor" : "none"}
-                  strokeWidth={1.5}
-                />
-              ))}
+          {product.rating != null && product.reviewCount != null ? (
+            <div className="flex items-center gap-2">
+              <div className="flex text-flare">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    size={15}
+                    fill={i < Math.round(product.rating!) ? "currentColor" : "none"}
+                    strokeWidth={1.5}
+                  />
+                ))}
+              </div>
+              <span className="text-sm text-steel">
+                {product.rating} ({product.reviewCount} reviews)
+              </span>
             </div>
-            <span className="text-sm text-steel">
-              {product.rating} ({product.reviewCount} reviews)
-            </span>
-          </div>
+          ) : (
+            <div />
+          )}
           <ProductActions slug={product.slug} title={product.title} />
         </div>
 

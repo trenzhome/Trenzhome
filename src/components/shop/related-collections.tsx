@@ -10,7 +10,7 @@ export function RelatedCollections({
   if (collections.length === 0) return null;
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-20">
+    <section className="mx-auto max-w-[1800px] px-6 py-20">
       <p className="eyebrow mb-3">Explore More</p>
       <h2 className="font-display text-3xl md:text-4xl mb-10">Related Collections</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

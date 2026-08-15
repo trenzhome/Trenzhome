@@ -1,7 +1,8 @@
-import { products, collectionStories } from "@/lib/products";
-import { ProductCard } from "@/components/product/product-card";
+import Link from "next/link";
+import { getProducts, collectionStories } from "@/lib/products";
 import { ShopHero } from "@/components/shop/shop-hero";
-import { ShopFilters } from "@/components/shop/shop-filters";
+import { CategoryRail } from "@/components/shop/category-rail";
+import { ShopBrowser } from "@/components/shop/shop-browser";
 import { BuyingGuide } from "@/components/shop/buying-guide";
 import { ShopFaqs } from "@/components/shop/shop-faqs";
 import { RelatedCollections } from "@/components/shop/related-collections";
@@ -20,6 +21,7 @@ export default async function ShopPage({
   }>;
 }) {
   const params = await searchParams;
+  const products = await getProducts();
   let list = products;
 
   if (params.category) {
@@ -56,7 +58,7 @@ export default async function ShopPage({
       list.sort((a, b) => b.basePrice - a.basePrice);
       break;
     case "rating":
-      list.sort((a, b) => b.rating - a.rating);
+      list.sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0));
       break;
   }
 
@@ -75,43 +77,64 @@ export default async function ShopPage({
   const heroCopy =
     story?.copy ??
     "Furniture and home goods built from honest materials, made to outlast the trend cycle.";
-  const heroSwatch = list[0]?.swatch ?? products[0].swatch;
+  const DEFAULT_SWATCH = "linear-gradient(135deg, #D9CBB5, #B8A582)";
+  const heroSwatch = list[0]?.swatch ?? products[0]?.swatch ?? DEFAULT_SWATCH;
+  const heroWithImages = list.filter((p) => p.image);
+  const heroImage = heroWithImages[0]?.image ?? products.find((p) => p.image)?.image;
+  const heroCollage = heroWithImages
+    .slice(1, 3)
+    .map((p) => ({ slug: p.slug, title: p.title, price: p.basePrice, image: p.image! }));
 
   const relatedCollections = categories
     .filter((c) => c.toLowerCase() !== params.category?.toLowerCase())
     .slice(0, 4)
     .map((category) => ({
       category,
-      swatch: products.find((p) => p.category === category)?.swatch ?? products[0].swatch,
+      swatch: products.find((p) => p.category === category)?.swatch ?? products[0]?.swatch ?? DEFAULT_SWATCH,
     }));
 
   return (
     <>
-      <div className="mx-auto max-w-7xl px-6 pt-6">
-        <ShopHero title={heroTitle} copy={heroCopy} swatch={heroSwatch} />
+      <div className="mx-auto max-w-[1800px] px-6 pt-6 text-xs text-steel">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2">
+          <Link href="/" className="hover:text-flare transition-colors">
+            Home
+          </Link>
+          <span>/</span>
+          <span className="text-ink">{heroTitle}</span>
+        </nav>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 py-16 flex flex-col md:flex-row gap-12">
-        <ShopFilters
+      <div className="mx-auto max-w-[1800px] px-6 pt-4">
+        <ShopHero
+          title={heroTitle}
+          copy={heroCopy}
+          swatch={heroSwatch}
+          image={heroImage}
+          collage={heroCollage}
+        />
+      </div>
+
+      <div className="mx-auto max-w-[1800px] px-6 pt-8">
+        <div className="bg-fog px-8 py-8 text-center">
+          <p className="eyebrow mb-2">Trenzhome Perks</p>
+          <p className="font-display text-2xl md:text-3xl">
+            Complimentary shipping over $150 &mdash; 30-day trial on every order
+          </p>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-[1800px] px-6 pt-8">
+        <CategoryRail categories={categories} activeCategory={params.category} />
+      </div>
+
+      <div className="mx-auto max-w-[1800px] px-6 py-16">
+        <ShopBrowser
+          products={list}
           categories={categories}
           activeCategory={params.category}
           priceBounds={priceBounds}
         />
-
-        <div className="flex-1">
-          <p className="text-sm text-steel mb-8">
-            {list.length} {list.length === 1 ? "product" : "products"}
-          </p>
-          {list.length === 0 ? (
-            <p className="text-steel">No products match these filters yet.</p>
-          ) : (
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
-              {list.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          )}
-        </div>
       </div>
 
       {story && <CollectionStory story={story} />}

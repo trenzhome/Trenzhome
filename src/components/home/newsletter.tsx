@@ -7,7 +7,7 @@ export function Newsletter() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section className="mx-auto max-w-7xl px-6 pb-24 md:pb-32">
+    <section className="mx-auto max-w-[1800px] px-6 pb-24 md:pb-32">
       <Reveal>
         <div className="relative overflow-hidden rounded-3xl bg-ink px-8 py-16 md:py-24 text-center">
           <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-flare/20 blur-3xl" />

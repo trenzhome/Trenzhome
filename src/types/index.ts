@@ -2,9 +2,11 @@ export interface ProductVariant {
   id: string;
   title: string;
   price: number;
+  compareAtPrice?: number;
   optionValues: Record<string, string>;
   inventory: number;
   tint?: string; // solid colour overlay applied to the showroom viewer when this variant is active
+  image?: string; // real product photo, when Shopify has one for this variant
 }
 
 export interface Hotspot {
@@ -36,10 +38,13 @@ export interface Product {
   material: string;
   basePrice: number;
   compareAtPrice?: number;
-  swatch: string; // CSS gradient used for the material-swatch thumbnail
+  swatch: string; // CSS gradient used for the material-swatch thumbnail when no real photo exists
+  image?: string; // real product photo from Shopify, preferred over swatch when present
+  images?: string[];
   variants: ProductVariant[];
-  rating: number;
-  reviewCount: number;
+  rating?: number;
+  reviewCount?: number;
+  isNew?: boolean;
   hotspots?: Hotspot[];
   materialDetail?: MaterialDetail;
 }
@@ -52,4 +57,5 @@ export interface CartLine {
   price: number;
   quantity: number;
   swatch: string;
+  image?: string;
 }

@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Leaf, Hammer, Compass, Heart } from "lucide-react";
 import { MaterialSwatch } from "@/components/product/material-swatch";
-import { products } from "@/lib/products";
+import { getProducts } from "@/lib/products";
 import { Reveal } from "@/components/home/reveal";
 
 export const metadata: Metadata = {
@@ -17,9 +17,11 @@ const NAV = [
   { id: "sustainability", label: "Sustainability" },
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const products = await getProducts();
+  const heroSwatch = products[0]?.swatch ?? "linear-gradient(135deg, #D9CBB5, #B8A582)";
   return (
-    <div className="mx-auto max-w-7xl px-6 py-16">
+    <div className="mx-auto max-w-[1800px] px-6 py-16">
       <p className="eyebrow mb-3">About</p>
       <h1 className="font-display text-5xl mb-6">Furnish Different</h1>
 
@@ -37,7 +39,7 @@ export default function AboutPage() {
 
       <section id="story" className="scroll-mt-32 grid md:grid-cols-2 gap-14 items-center py-10 border-t border-ink/10">
         <Reveal direction="left">
-          <MaterialSwatch gradient={products[0].swatch} className="aspect-[4/5] rounded-2xl shadow-soft" />
+          <MaterialSwatch gradient={heroSwatch} className="aspect-[4/5] rounded-2xl shadow-soft" />
         </Reveal>
         <Reveal direction="right" delay={0.1}>
           <p className="eyebrow mb-3">Our Story</p>

@@ -8,9 +8,9 @@ export default function SecurityPolicyPage() {
     <LegalLayout title="Security Policy" lastUpdated="August 5, 2026">
       <LegalSection title="Payment Security">
         <p>
-          We use Stripe Checkout for all payments. Your card details are entered directly into
-          Stripe&rsquo;s hosted checkout page and never pass through our servers — this keeps us out
-          of direct PCI-DSS scope for cardholder data, because we never handle it. Stripe is
+          We use Shopify Checkout for all payments. Your card details are entered directly into
+          Shopify&rsquo;s hosted checkout page and never pass through our servers — this keeps us out
+          of direct PCI-DSS scope for cardholder data, because we never handle it. Shopify is
           independently PCI-DSS Level 1 certified.
         </p>
       </LegalSection>

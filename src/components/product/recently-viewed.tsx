@@ -1,18 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getProductBySlug } from "@/lib/products";
+import { Product } from "@/types";
 import { readRecentlyViewed } from "@/lib/recently-viewed";
 import { ProductCard } from "./product-card";
 
 export function RecentlyViewed({ excludeSlug }: { excludeSlug: string }) {
-  const [slugs, setSlugs] = useState<string[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    setSlugs(readRecentlyViewed().filter((s) => s !== excludeSlug));
+    const slugs = readRecentlyViewed().filter((s) => s !== excludeSlug);
+    if (slugs.length === 0) return;
+    fetch("/api/products/lookup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ slugs }),
+    })
+      .then((res) => res.json())
+      .then((data) => setProducts(data.products ?? []))
+      .catch(() => setProducts([]));
   }, [excludeSlug]);
-
-  const products = slugs.map(getProductBySlug).filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   if (products.length === 0) return null;
 

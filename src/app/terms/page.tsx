@@ -17,7 +17,7 @@ export default function TermsPage() {
       <LegalSection title="Orders and Payment">
         <p>
           All prices are listed in AUD and are shown at checkout before you pay. Payment is processed
-          through Stripe at the time of order. We reserve the right to cancel any order — for example
+          through Shopify at the time of order. We reserve the right to cancel any order — for example
           if an item is out of stock despite showing as available, or if we suspect fraud — and will
           refund you in full if we do.
         </p>

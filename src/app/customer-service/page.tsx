@@ -64,7 +64,7 @@ export default function CustomerServicePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-16">
+    <div className="mx-auto max-w-[1800px] px-6 py-16">
       <p className="eyebrow mb-3">Help Center</p>
       <h1 className="font-display text-5xl mb-6">Customer Service</h1>
 

@@ -16,7 +16,7 @@ export default function AccountPage() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-16">
+    <div className="mx-auto max-w-[1800px] px-6 py-16">
       <div className="grid md:grid-cols-2 gap-16 items-start">
         <div>
           <p className="eyebrow mb-3">Account</p>

@@ -25,7 +25,7 @@ export function WishlistGrid({
           >
             <X size={15} strokeWidth={2} />
           </button>
-          <ProductCard product={product} />
+          <ProductCard product={product} showWishlistButton={false} />
         </div>
       ))}
     </div>

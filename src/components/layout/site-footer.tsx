@@ -52,7 +52,7 @@ const SOCIALS = [
 export function SiteFooter() {
   return (
     <footer className="bg-ink text-paper mt-24">
-      <div className="mx-auto max-w-7xl px-6 py-20 grid grid-cols-2 md:grid-cols-6 gap-10">
+      <div className="mx-auto max-w-[1800px] px-6 py-20 grid grid-cols-2 md:grid-cols-6 gap-10">
         <div className="col-span-2 md:col-span-2">
           <p className="font-display text-3xl mb-4">Trenzhome</p>
           <p className="text-sm text-paper/60 max-w-xs leading-relaxed mb-6">
@@ -90,8 +90,20 @@ export function SiteFooter() {
           </div>
         ))}
       </div>
+      <div className="border-t border-paper/10 px-6 py-5">
+        <div className="mx-auto max-w-[1800px] flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[11px] font-mono uppercase tracking-wide text-paper/40">
+          <span>Secure checkout</span>
+          <span aria-hidden>&middot;</span>
+          {["Visa", "Mastercard", "Amex", "PayPal", "Apple Pay"].map((method) => (
+            <span key={method} className="rounded border border-paper/15 px-2 py-1">
+              {method}
+            </span>
+          ))}
+        </div>
+      </div>
+
       <div className="border-t border-paper/10 px-6 py-6">
-        <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-paper/50 font-mono">
+        <div className="mx-auto max-w-[1800px] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-paper/50 font-mono">
           <span>&copy; {new Date().getFullYear()} Trenzhome. All rights reserved.</span>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             <Link href="/privacy" className="hover:text-flare transition-colors">Privacy</Link>

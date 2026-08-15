@@ -1,28 +1,55 @@
 import Link from "next/link";
-import { products, collectionStories } from "@/lib/products";
+import Image from "next/image";
+import { getProducts, collectionStories } from "@/lib/products";
 import { ProductCard } from "@/components/product/product-card";
 import { MaterialSwatch } from "@/components/product/material-swatch";
 import { Hero } from "@/components/home/hero";
 import { Reveal } from "@/components/home/reveal";
+import { ShopTheLook } from "@/components/home/shop-the-look";
 import { Testimonials } from "@/components/home/testimonials";
 import { Newsletter } from "@/components/home/newsletter";
 
-const ROOMS = [
-  { label: "Living Room", category: "living", swatch: products[0].swatch },
-  { label: "Bedroom", category: "bedding", swatch: products[2].swatch },
-  { label: "Dining Room", category: "dining", swatch: products[1].swatch },
-  { label: "Lighting", category: "lighting", swatch: products[3].swatch },
-];
+export const dynamic = "force-dynamic";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const products = await getProducts();
+  const byCategory = (category: string) => products.find((p) => p.category === category);
+  const bySwatch = (category: string) => byCategory(category)?.swatch ?? products[0]?.swatch;
+  const byImage = (category: string) =>
+    products.find((p) => p.category === category && p.image)?.image;
+
+  const ROOMS = [
+    { label: "Living Room", category: "living", swatch: bySwatch("Living"), image: byImage("Living") },
+    { label: "Bedroom", category: "bedding", swatch: bySwatch("Bedding"), image: byImage("Bedding") },
+    { label: "Dining Room", category: "dining", swatch: bySwatch("Dining"), image: byImage("Dining") },
+    { label: "Lighting", category: "lighting", swatch: bySwatch("Lighting"), image: byImage("Lighting") },
+  ];
+
   const featured = products.slice(0, 4);
+
+  const heroFeatured = (() => {
+    const withImages = products.filter((p) => p.image);
+    const seenCategories = new Set<string>();
+    const picks = [];
+    for (const p of withImages) {
+      if (picks.length >= 4) break;
+      if (seenCategories.has(p.category)) continue;
+      seenCategories.add(p.category);
+      picks.push(p);
+    }
+    for (const p of withImages) {
+      if (picks.length >= 4) break;
+      if (!picks.includes(p)) picks.push(p);
+    }
+    return picks.map((p) => ({ slug: p.slug, title: p.title, price: p.basePrice, image: p.image }));
+  })();
 
   return (
     <>
-      <Hero />
+      <Hero swatch={products[0]?.swatch} featured={heroFeatured} />
 
       {/* Featured collections */}
-      <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+      <section className="mx-auto max-w-[1800px] px-6 py-24 md:py-32">
         <Reveal>
           <p className="eyebrow mb-3">Shop by Room</p>
           <h2 className="font-display text-3xl md:text-4xl mb-12 max-w-lg">
@@ -36,10 +63,20 @@ export default function HomePage() {
                 href={`/shop?category=${room.category}`}
                 className="group relative block aspect-[3/4] overflow-hidden rounded-2xl shadow-soft hover:shadow-luxury transition-shadow duration-500"
               >
-                <MaterialSwatch
-                  gradient={room.swatch}
-                  className="absolute inset-0 h-full w-full transition-transform duration-700 ease-out group-hover:scale-110"
-                />
+                {room.image ? (
+                  <Image
+                    src={room.image}
+                    alt={room.label}
+                    fill
+                    sizes="(min-width: 1024px) 25vw, 50vw"
+                    className="absolute inset-0 object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  />
+                ) : (
+                  <MaterialSwatch
+                    gradient={room.swatch}
+                    className="absolute inset-0 h-full w-full transition-transform duration-700 ease-out group-hover:scale-110"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6 flex items-center justify-between">
                   <span className="font-display text-xl text-paper">{room.label}</span>
@@ -53,9 +90,11 @@ export default function HomePage() {
         </div>
       </section>
 
+      <ShopTheLook products={products} />
+
       {/* Featured products */}
       <section className="bg-fog py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-[1800px] px-6">
           <Reveal>
             <div className="flex items-end justify-between mb-12">
               <div>
@@ -78,10 +117,13 @@ export default function HomePage() {
       </section>
 
       {/* Editorial / lifestyle sections */}
-      <section className="mx-auto max-w-7xl px-6 py-24 md:py-32 space-y-24 md:space-y-32">
-        {Object.values(collectionStories)
+      <section className="mx-auto max-w-[1800px] px-6 py-24 md:py-32 space-y-24 md:space-y-32">
+        {Object.entries(collectionStories)
           .slice(0, 2)
-          .map((story, i) => (
+          .map(([category, story], i) => {
+            const storyProduct =
+              products.find((p) => p.category === category && p.image) ?? products[i * 2] ?? products[0];
+            return (
             <div
               key={story.title}
               className={`grid md:grid-cols-2 gap-10 md:gap-16 items-center ${
@@ -89,10 +131,22 @@ export default function HomePage() {
               }`}
             >
               <Reveal direction={i % 2 === 1 ? "right" : "left"}>
-                <MaterialSwatch
-                  gradient={products[i * 2]?.swatch ?? products[0].swatch}
-                  className="aspect-[4/5] rounded-2xl shadow-soft"
-                />
+                {storyProduct?.image ? (
+                  <div className="relative aspect-[4/5] rounded-2xl shadow-soft overflow-hidden">
+                    <Image
+                      src={storyProduct.image}
+                      alt={storyProduct.title}
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <MaterialSwatch
+                    gradient={storyProduct?.swatch ?? products[0]?.swatch}
+                    className="aspect-[4/5] rounded-2xl shadow-soft"
+                  />
+                )}
               </Reveal>
               <Reveal direction={i % 2 === 1 ? "left" : "right"} delay={0.1}>
                 <p className="eyebrow mb-3">Editorial</p>
@@ -103,7 +157,8 @@ export default function HomePage() {
                 </Link>
               </Reveal>
             </div>
-          ))}
+            );
+          })}
       </section>
 
       <Testimonials />

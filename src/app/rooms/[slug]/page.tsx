@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { rooms, getRoomBySlug } from "@/lib/rooms";
-import { products } from "@/lib/products";
+import { getProducts } from "@/lib/products";
 import { RoomHero } from "@/components/rooms/room-hero";
 import { ColorPalette } from "@/components/rooms/color-palette";
 import { StyleGuide } from "@/components/rooms/style-guide";
@@ -32,17 +32,20 @@ export default async function RoomPage({
   const room = getRoomBySlug(slug);
   if (!room) notFound();
 
+  const products = await getProducts();
   const curated = products.filter((p) =>
     room.categories.some((c) => c.toLowerCase() === p.category.toLowerCase())
   );
+  const heroImage = curated.find((p) => p.image)?.image;
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-6">
+    <div className="mx-auto max-w-[1800px] px-6 py-6">
       <RoomHero
         name={room.name}
         tagline={room.tagline}
         description={room.description}
         swatch={room.heroSwatch}
+        image={heroImage}
       />
 
       <div className="grid md:grid-cols-2 gap-16 py-20">

@@ -33,11 +33,11 @@ export default function CookiePolicyPage() {
 
       <LegalSection title="Payment Processing">
         <p>
-          When you check out, you&rsquo;re redirected to a Stripe-hosted checkout page. Stripe may set
+          When you check out, you&rsquo;re redirected to a Shopify-hosted checkout page. Shopify may set
           its own cookies on that page as part of processing your payment securely and preventing
           fraud — this is governed by{" "}
-          <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-flare">
-            Stripe&rsquo;s own privacy policy
+          <a href="https://www.shopify.com/legal/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-flare">
+            Shopify&rsquo;s own privacy policy
           </a>, not this one.
         </p>
       </LegalSection>
