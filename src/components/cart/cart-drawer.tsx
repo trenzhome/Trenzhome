@@ -1,23 +1,67 @@
 "use client";
 
-import { X, Minus, Plus } from "lucide-react";
+import { useEffect, useState } from "react";
+import { X, Minus, Plus, BadgeCheck } from "lucide-react";
 import { useCart } from "./cart-context";
 import { MaterialSwatch } from "@/components/product/material-swatch";
+import { ScratchDiscountModal } from "./scratch-discount-modal";
+
+const DISCOUNT_CODE = "SCRATCH10";
+const DISCOUNT_PERCENT = 10;
+const SCRATCH_KEY = "trenzhome-scratch-code";
 
 export function CartDrawer() {
   const { isOpen, closeCart, lines, updateQuantity, removeLine, subtotal } =
     useCart();
+  const [discountCode, setDiscountCode] = useState<string | null>(null);
+  const [skipped, setSkipped] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [revealedInModal, setRevealedInModal] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem(SCRATCH_KEY)) setDiscountCode(DISCOUNT_CODE);
+  }, []);
 
   if (!isOpen) return null;
 
-  async function handleCheckout() {
+  async function goToCheckout(codeOverride?: string | null) {
+    const code = codeOverride !== undefined ? codeOverride : discountCode;
     const res = await fetch("/api/checkout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ lines }),
     });
     const data = await res.json();
-    if (data.url) window.location.href = data.url;
+    if (!data.url) return;
+    const url = code
+      ? `${data.url}${data.url.includes("?") ? "&" : "?"}discount=${code}`
+      : data.url;
+    window.location.href = url;
+  }
+
+  function handleCheckoutClick() {
+    if (discountCode || skipped) {
+      goToCheckout();
+    } else {
+      setModalOpen(true);
+    }
+  }
+
+  function handleReveal() {
+    localStorage.setItem(SCRATCH_KEY, DISCOUNT_CODE);
+    setDiscountCode(DISCOUNT_CODE);
+    setRevealedInModal(true);
+  }
+
+  function handleSkip() {
+    setModalOpen(false);
+    setSkipped(true);
+    goToCheckout(null);
+  }
+
+  function handleContinue() {
+    setModalOpen(false);
+    goToCheckout(DISCOUNT_CODE);
   }
 
   return (
@@ -94,6 +138,15 @@ export function CartDrawer() {
 
         {lines.length > 0 && (
           <div className="border-t border-ink/10 px-6 py-5 space-y-4">
+            {discountCode && (
+              <div className="flex items-center gap-2 rounded-xl bg-fog px-4 py-3 text-sm">
+                <BadgeCheck size={16} className="text-flare shrink-0" strokeWidth={2} />
+                <span>
+                  {DISCOUNT_PERCENT}% off applied &mdash; code{" "}
+                  <span className="font-mono font-bold">{discountCode}</span>
+                </span>
+              </div>
+            )}
             <div className="flex justify-between font-mono text-sm font-bold">
               <span>Subtotal</span>
               <span>${subtotal.toLocaleString()}</span>
@@ -101,12 +154,22 @@ export function CartDrawer() {
             <p className="text-xs text-steel">
               Shipping and tax calculated at checkout.
             </p>
-            <button onClick={handleCheckout} className="btn-flare w-full">
+            <button onClick={handleCheckoutClick} className="btn-flare w-full">
               Checkout
             </button>
           </div>
         )}
       </div>
+
+      <ScratchDiscountModal
+        open={modalOpen}
+        revealed={revealedInModal}
+        code={DISCOUNT_CODE}
+        percentage={DISCOUNT_PERCENT}
+        onReveal={handleReveal}
+        onSkip={handleSkip}
+        onContinue={handleContinue}
+      />
     </div>
   );
 }
